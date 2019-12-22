@@ -6,3 +6,4 @@ History
 ------------------
 
 * ``uniquetuple``
+* benchmarking via pytest-benchmark
