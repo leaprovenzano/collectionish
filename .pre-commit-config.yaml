@@ -17,4 +17,5 @@ repos:
     rev: 'master'
     hooks:
     -   id: mypy
-        args: [--follow-imports=silent]
+        args: [--follow-imports=silent, --ignore-missing-imports]
+        exclude: "tests/*"
