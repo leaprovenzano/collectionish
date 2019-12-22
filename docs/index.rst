@@ -1,5 +1,3 @@
-Welcome to More Containers's documentation!
-======================================
 
 .. toctree::
    :maxdepth: 2
@@ -7,8 +5,7 @@ Welcome to More Containers's documentation!
 
    readme
    installation
-   usage
-   more_containers
+   containers
    contributing
    authors
    history
@@ -16,5 +13,4 @@ Welcome to More Containers's documentation!
 Indices and tables
 ==================
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`

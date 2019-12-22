@@ -34,12 +34,6 @@ You can either clone the public repository:
 
     $ git clone git://github.com/leaprovenzano/more_containers
 
-Or download the `tarball`_:
-
-.. code-block:: console
-
-    $ curl -OJL https://github.com/leaprovenzano/more_containers/tarball/master
-
 Once you have a copy of the source, you can install it with:
 
 .. code-block:: console
@@ -48,4 +42,3 @@ Once you have a copy of the source, you can install it with:
 
 
 .. _Github repo: https://github.com/leaprovenzano/more_containers
-.. _tarball: https://github.com/leaprovenzano/more_containers/tarball/master
