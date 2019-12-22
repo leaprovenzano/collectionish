@@ -8,18 +8,19 @@ class uniquetuple(Tuple[T, ...]):  # noqa : N801
 
     """An immutable sequence of unique and hashable items ordered by first appearance.
 
-    - like `tuple` and `frozenset` uniquetuple is immutable.
-    - like `frozenset` unique tuple accepts only hashable values.
-    - unlike `frozenset`, uniquetuple cares about insertion order and orders by will be ordered by
-    first appearance.
-    - unlike both `tuple` and `set` unique tuple may be initilized with an unpacked iterable ( ie:
-    `uniquetuple(1, 2, 3)`).
+    - like ``tuple`` and ``frozenset``,  ``uniquetuple`` is immutable.
+    - like ``frozenset``, ``uniquetuple`` accepts only hashable values.
+    - `unlike` ``frozenset``, ``uniquetuple`` cares about insertion order. \
+    It orders by will be ordered by first appearance.
+    - finally ``uniquetuple`` may be initilized with an unpacked iterable.
 
     Example:
+
         >>> from more_containers import uniquetuple
         >>>
         >>> uniquetuple(3, 2, 3, 1)
         uniquetuple(3, 2, 1)
+
     """
 
     def __new__(cls, *args: Sequence[T]):
