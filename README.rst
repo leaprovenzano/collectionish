@@ -1,5 +1,5 @@
 ===============
-more-containers
+More Containers
 ===============
 
 
@@ -27,8 +27,4 @@ more python containers
 * Documentation: https://more-containers.readthedocs.io.
 
 
-Features
---------
-
-* TODO
 
