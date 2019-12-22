@@ -20,9 +20,12 @@
 #
 import os
 import sys
+
 sys.path.insert(0, os.path.abspath('../src'))
 
 import more_containers
+
+import sphinx_material
 
 
 # -- Extensions to the  Napoleon GoogleDocstring class ---------------------
@@ -52,11 +55,13 @@ GoogleDocstring._parse_attributes_section = parse_attributes_section
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 
-              'sphinx.ext.viewcode',
-              # napolean for google style docstrings
-              'sphinx.ext.napoleon'
-              ]
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
+    # napolean for google style docstrings
+    'sphinx.ext.napoleon',
+    'sphinx.ext.autosectionlabel',
+]
 
 autodoc_member_order = 'bysource'
 
@@ -107,6 +112,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
+highlight_language = 'python3'
+
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
@@ -116,7 +123,6 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.  For a list of options available for each theme, see the
@@ -138,43 +144,43 @@ htmlhelp_basename = 'more_containersdoc'
 
 # -- Options for LaTeX output ------------------------------------------
 
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    #
-    # 'papersize': 'letterpaper',
+# latex_elements = {
+#     # The paper size ('letterpaper' or 'a4paper').
+#     #
+#     # 'papersize': 'letterpaper',
 
-    # The font size ('10pt', '11pt' or '12pt').
-    #
-    # 'pointsize': '10pt',
+#     # The font size ('10pt', '11pt' or '12pt').
+#     #
+#     # 'pointsize': '10pt',
 
-    # Additional stuff for the LaTeX preamble.
-    #
-    # 'preamble': '',
+#     # Additional stuff for the LaTeX preamble.
+#     #
+#     # 'preamble': '',
 
-    # Latex figure (float) alignment
-    #
-    # 'figure_align': 'htbp',
-}
+#     # Latex figure (float) alignment
+#     #
+#     # 'figure_align': 'htbp',
+# }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, 'more_containers.tex',
-     u'More Containers Documentation',
-     u'Lea Provenzano', 'manual'),
-]
+# latex_documents = [
+#     (master_doc, 'more_containers.tex',
+#      u'More Containers Documentation',
+#      u'Lea Provenzano', 'manual'),
+# ]
 
 
 # -- Options for manual page output ------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'more_containers',
-     u'More Containers Documentation',
-     [author], 1)
-]
+# man_pages = [
+#     (master_doc, 'more_containers',
+#      u'More Containers Documentation',
+#      [author], 1)
+# ]
 
 
 # -- Options for Texinfo output ----------------------------------------
@@ -182,14 +188,47 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'more_containers',
-     u'More Containers Documentation',
-     author,
-     'more_containers',
-     'One line description of project.',
-     'Miscellaneous'),
-]
+# texinfo_documents = [
+#     (master_doc, 'more_containers',
+#      u'More Containers Documentation',
+#      author,
+#      'more_containers',
+#      'One line description of project.',
+#      'Miscellaneous'),
+# ]
 
+import sphinx_material
 
+# Required theme setup
+extensions.append('sphinx_material')
+html_theme = 'sphinx_material'
+html_theme_path = sphinx_material.html_theme_path()
+html_context = sphinx_material.get_html_context()
+html_show_sourcelink = False
 
+# # Material theme options (see theme.conf for more information)
+html_theme_options = {
+    # Set the name of the project to appear in the navigation.
+    'nav_title': 'more-containers',
+    #     # Set you GA account ID to enable tracking
+    #     'google_analytics_account': 'UA-XXXXX',
+    #     # Specify a base_url used to generate sitemap.xml. If not
+    #     # specified, then no sitemap will be built.
+    # 'base_url': 'https://project.github.io/project',
+    #     # Set the color and the accent color
+    #     'color_primary': 'blue',
+    #     'color_accent': 'light-blue',
+    #     # Set the repo location to get a badge with stats
+    'repo_url': 'https://github.com/leaprovenzano/more-containers/',
+    'repo_name': 'more-containers',
+    'html_minify': True,
+    'css_minify': True,
+    #     # Visible levels of the global TOC; -1 means unlimited
+    # 'globaltoc_depth': 2,
+    #     # If False, expand all TOC entries
+    'globaltoc_collapse': False,
+    #     # If True, show hidden TOC entries
+    'globaltoc_includehidden': False,
+}
+
+html_sidebars = {"**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]}
