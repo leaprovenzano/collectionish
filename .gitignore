@@ -114,3 +114,6 @@ env/
 
 # pycharm
 \.idea/
+
+# benchmarks ... for now
+.benchmarks/
