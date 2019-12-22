@@ -1,5 +1,5 @@
 ===============
-more-containers
+More Containers
 ===============
 
 
@@ -25,10 +25,4 @@ more python containers
 
 * Free software: MIT license
 * Documentation: https://more-containers.readthedocs.io.
-
-
-Features
---------
-
-* TODO
 
