@@ -6,6 +6,7 @@
    readme
    installation
    containers
+   ops
    contributing
    authors
    history

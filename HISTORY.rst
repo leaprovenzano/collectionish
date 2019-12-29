@@ -7,3 +7,5 @@ History
 
 * ``uniquetuple``
 * benchmarking via pytest-benchmark
+* ``attydict``
+* ``ops``module w/ recursive gettattr and setattr functions.

@@ -8,7 +8,8 @@ __email__ = 'leaprovenzano@gmail.com'
 __version__ = '0.1.0'
 
 # this is exists to make sphinx happy
-__all__ = ['uniquetuple']
+__all__ = ['uniquetuple', 'attydict']
 
 
 from ._uniquetuple import uniquetuple
+from ._attydict import attydict
