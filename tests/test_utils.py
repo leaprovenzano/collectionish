@@ -48,10 +48,6 @@ def test_is_mapping(data, obj, expected):
 @mark_params
 @param(obj=one_of_types(list, tuple, frozenset, set), expected=True)
 @param(obj=everything_except(list, tuple, frozenset, set), expected=False)
-@param(
-    obj=one_of_types(*MAPPING_TYPES) | st.from_type(dict).map(MappingProxyType) | st.text(),
-    expected=False,
-)
 @given(data=st.data())
 def test_is_arraylike(data, obj, expected):
     inp = data.draw(obj)

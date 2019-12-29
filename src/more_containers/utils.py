@@ -30,5 +30,5 @@ def is_arraylike(obj: Any) -> bool:
         >>> is_arraylike('a string')
         False
     """
-    exclude = (Mapping, str, bytes, bytearray)
+    exclude = (Mapping, str, bytes, bytearray, range, memoryview)
     return isinstance(obj, Collection) and not isinstance(obj, exclude)
