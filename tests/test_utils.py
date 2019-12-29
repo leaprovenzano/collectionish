@@ -1,9 +1,17 @@
+import typing as t
 import ast
+from types import MappingProxyType
 
 import hypothesis.strategies as st
 from hypothesis import given
 
 from more_containers.utils import is_valid_identifier
+from more_containers.utils import is_mapping
+
+from tests.utils import param, mark_params
+from tests.strategies import everything_except, one_of_types
+
+MAPPING_TYPES = (t.Mapping, t.MutableMapping, dict)
 
 
 def validate_identifier_as_ast(s: str):
@@ -26,3 +34,12 @@ def validate_identifier_as_ast(s: str):
 def test_is_valid_identifier(s):
     if is_valid_identifier(s):
         validate_identifier_as_ast(s)
+
+
+@mark_params
+@param(obj=one_of_types(*MAPPING_TYPES) | st.from_type(dict).map(MappingProxyType), expected=True)
+@param(obj=everything_except(*MAPPING_TYPES, MappingProxyType), expected=False)
+@given(data=st.data())
+def test_is_mapping(data, obj, expected):
+    inp = data.draw(obj)
+    assert is_mapping(inp) == expected
