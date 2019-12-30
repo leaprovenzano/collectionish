@@ -4,7 +4,6 @@ watchdog
 # docs
 Sphinx
 sphinxcontrib-napoleon
-sphinx_material
 
 # packaging and builds
 twine
