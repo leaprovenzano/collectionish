@@ -7,11 +7,18 @@ T = TypeVar('T')
 
 class attydict(Dict[str, T]):  # noqa : N801
 
-    """a classic dict with dot access.
+    """A lightweight dictionary with dot access.
+
+    ``attydicts`` are dictionaries witch allow access to values values through dot notation.
+    The limitation there is that their keys must be strings ( and valid python identifiers )
+    but sometimes this is what you want when working with json objects unpredictable json
+    or the like. That said, if you have sturctured data you'd  of course be much better off \
+    using a structured datatype.
 
     Example:
 
-        initilize a basic attydict
+        initilize a basic attydict:
+
         >>> from more_containers import attydict
         >>>
         >>> the_sea = attydict(crabs=10, fish=2)
@@ -30,8 +37,7 @@ class attydict(Dict[str, T]):  # noqa : N801
         >>> the_sea.submarines.actual
         1
 
-        we handle name clashes in a similar way to pandas -
-        Reserved names can be set using standard dict access:
+        we handle name clashes in a similar way to pandas - Reserved names can be set using standard dict access:
         >>> the_sea['pop'] = 'corn'
         >>> the_sea
         {'crabs': 11, 'fish': 2, 'submarines': {'sandwich': 0, 'actual': 1}, 'pop': 'corn'}
