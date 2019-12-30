@@ -5,7 +5,7 @@
 
 __author__ = """Lea Provenzano"""
 __email__ = 'leaprovenzano@gmail.com'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 # this is exists to make sphinx happy
 __all__ = ['UniqueTuple', 'AttyDict']
