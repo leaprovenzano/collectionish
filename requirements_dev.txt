@@ -4,6 +4,7 @@ watchdog
 # docs
 Sphinx
 sphinxcontrib-napoleon
+sphinx_rtd_theme
 
 # packaging and builds
 twine
