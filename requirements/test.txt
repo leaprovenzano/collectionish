@@ -1,5 +1,5 @@
 pytest
-pytest-runner
 coverage
 hypothesis
 pytest-cov
+pytest-benchmark

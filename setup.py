@@ -16,8 +16,6 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 
-setup_requirements = ['pytest-runner']
-
 test_requirements = ['pytest']
 
 setup(
@@ -40,7 +38,6 @@ setup(
     name='collectionish',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/leaprovenzano/collectionish',
