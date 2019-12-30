@@ -77,14 +77,17 @@ def rgetitem(obj: Union[Sequence, Mapping], *keys: Iterable[Hashable]):
         >>> thing = {'a': 1, 'b': {'ba': 1, 'bb': 2}}
 
         with only one key it works like normal :py:func:`__getitem__`:
+
         >>> rgetitem(thing, 'a')
         1
 
         with multiple ``rgetattr`` gets items recursively:
+
         >>> rgetitem(thing, 'b', 'bb')
         2
 
         works fine with lists and stuff as well:
+
         >>> nested_list = [1, [1, 2, [1, 2, 3]], 2]
         >>> rgetitem(nested_list, -1)
         2
