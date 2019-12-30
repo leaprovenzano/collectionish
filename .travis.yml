@@ -1,12 +1,17 @@
-# Config file for automatic testing at travis-ci.org
 language: python
 python:
-  - "3.7.5"
-  - "3.7.6"
-  - "3.8"
-# command to install dependencies
+- 3.7.5
+- 3.7.6
+- '3.8'
 install:
-  - pip install -r requirements/test.txt
-  - pip install .
-# command to run tests
+- pip install -r requirements/test.txt
+- pip install .
 script: pytest
+deploy:
+  provider: pypi
+  user: "__token__"
+  password:
+    secure: Qoy3sg/oRKDTSFHnUxC4Wr3hCMuspgRDr3+mJETHWG3IloHUNaQmaYdaRx+DjNvF6ncXTDQc+B0BHWby5L/Rji/2GdNUR5DPno2wuBAk1upPBE/OqT1snBCXtPJ7BGhpWZNHhR5XH4bjrQdtfU7v6ApYpuR034el7GHrpRs/Pj2Ya9C1C6Ur0/MGy9ZO4/mDXMzkms6yfdDIzUwoSwPOKfaT2nnkVxgfupvS0dOwI+Qp7PHjWPXtQLC0hk8SFJaBmq8S76P7D6dT0elCJxWhf9Y4wqH8o8SWyQg9TnZnzAQyCWLgTTGamv3NHOOD/fG+yeZrXl0e8UuDUjnNLUb5CitIIzvZPU49CQXYOU1wGHpE/RFMlBAN7R+fhgt35LTlRQrCZsTk+BdqWuwX3DbtDVRIonelxonlwIcmcOHu01W+rcrKonDFas+crVO+8k5Xn3HwG2q8OJPnRr1C0ND/ifwvw4BEAI/QOt7+qDNBPcf48VXpnzG3FXRA9992njNqyyxDOR6D49WDTfvEKD3+tWhkk/hGYzjhNrXItY/bUZSd8HypaOWz0qXoy/xE6WVKj3aFaRqn7XiWuIf45KE3qRmN+lGL3t61CuKShDes/D6ZUw+0uu6DuYHDBgWGAQ9RCpwasRAXEBQOWs2qahgYn0q/KulxnqlmFog6CW6wJiE=
+  skip_existing: true
+  on:
+    tags: true
