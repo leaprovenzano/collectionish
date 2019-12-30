@@ -10,6 +10,8 @@ def is_valid_identifier(s: str) -> bool:
 
 
 def is_mapping(obj: Any) -> bool:
+    """Just a shorthand for instancecheck on :py:class:`typing.Mapping`.
+    """
     return isinstance(obj, Mapping)
 
 
@@ -43,7 +45,7 @@ def is_hashable(obj: Any) -> bool:
         >>> is_hashable([1, 2, 3])
         False
         >>> is_hashable('boop')
-        >>> True
+        True
     """
     try:
         hash(obj)
