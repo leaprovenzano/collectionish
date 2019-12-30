@@ -6,18 +6,21 @@
 Welcome to more-containers's documentation!
 ===========================================
 
+.. include:: ../README.rst
+
+.. currentmodule:: more_containers
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-.. currentmodule:: more_containers
+   containers
 
 .. autosummary::
    :toctree: _autosummary
-
+   
    ops
-   attydict
-   uniquetuple
 
 Indices and tables
 ==================
