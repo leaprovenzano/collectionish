@@ -15,9 +15,8 @@ collectionish
 
 
 
-more python containers
+More python collection datatypes and ops for working with them.
 
 
 * Free software: MIT license
 * Documentation: https://collectionish.readthedocs.io.
-
