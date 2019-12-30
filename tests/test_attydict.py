@@ -27,9 +27,9 @@ flat_values = st.text(string.ascii_lowercase).filter(is_valid_identifier)
 nested_values = st.recursive(
     flat_values,
     lambda children: st.one_of(
-        st.lists(children, min_size=1),
-        st.dictionaries(valid_keys, children, min_size=1),
-        st.dictionaries(valid_keys, children, min_size=1).map(lambda x: AttyDict(**x)),
+        st.lists(children, min_size=1, max_size=5),
+        st.dictionaries(valid_keys, children, min_size=1, max_size=5),
+        st.dictionaries(valid_keys, children, min_size=1, max_size=5).map(lambda x: AttyDict(**x)),
     ),
     max_leaves=5,
 )
@@ -122,7 +122,6 @@ class AttyDictMachine(RuleBasedStateMachine):
 
     @rule(k=consumes(keys), v=consumes(values))
     def set_as_attr(self, k, v):
-        print(k, v)
         if isinstance(k, tuple):
             assume(k[0] in self.atty)
             ops.rsetattr(self.atty, k, deepcopy(v))
@@ -135,7 +134,6 @@ class AttyDictMachine(RuleBasedStateMachine):
 
     @rule(k=consumes(keys), v=consumes(values))
     def set_as_key(self, k, v):
-        print(k, v)
         if isinstance(k, tuple):
             assume(k[0] in self.atty)
             ops.rsetitem(self.atty, k, v)
@@ -149,13 +147,9 @@ class AttyDictMachine(RuleBasedStateMachine):
     @precondition(lambda self: self.change == 1)
     @invariant()
     def check(self):
-        print('-----check-------')
-        print('atty:\n', self.atty)
-        print('shadow:\n', self.shadow)
         self.change = 0
         assert valid_values(*self.atty.values())
         assert dict(self.atty) == self.shadow
-        print('-----------------')
 
 
 TestAttyDict = AttyDictMachine.TestCase

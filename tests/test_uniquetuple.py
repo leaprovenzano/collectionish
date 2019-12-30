@@ -1,14 +1,16 @@
 from typing import Sequence, Hashable, Union
 
-from hypothesis import given, infer
+from hypothesis import given, infer, assume
 
 from collectionish import UniqueTuple
+from collectionish.utils import is_hashable
 
 from tests.utils import param, mark_params
 
 
 @given(args=infer)
 def test_uniquetuple_is_unique(args: Sequence[Hashable]):
+    assume(all(map(is_hashable, args)))
     assert len(UniqueTuple(*args)) == len(set(args))
 
 

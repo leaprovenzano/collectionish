@@ -32,3 +32,21 @@ def is_arraylike(obj: Any) -> bool:
     """
     exclude = (Mapping, str, bytes, bytearray, range, memoryview)
     return isinstance(obj, Collection) and not isinstance(obj, exclude)
+
+
+def is_hashable(obj: Any) -> bool:
+    """Determine if the given object is hashable.
+
+    Example:
+        >>> from collectionish.utils import is_hashable
+        >>>
+        >>> is_hashable([1, 2, 3])
+        False
+        >>> is_hashable('boop')
+        >>> True
+    """
+    try:
+        hash(obj)
+        return True
+    except TypeError:
+        return False
