@@ -3,11 +3,11 @@ from functools import reduce
 
 
 def rgetattr(obj: Any, *keys: Iterable[str]):
-    """A recursive version of :function:`python:getattr`.
+    """A recursive version of :py:func:`getattr`.
 
     Example:
 
-        Here's a simple example using :class:`python:types.SimpleNamespace` as a standin for \
+        Here's a simple example using :py:class:`types.SimpleNamespace` as a standin for \
         anything with attibute access:
 
         >>> from types import SimpleNamespace
@@ -15,7 +15,7 @@ def rgetattr(obj: Any, *keys: Iterable[str]):
         >>>
         >>> thing = SimpleNamespace(a=1, b=SimpleNamespace(ba=1, bb=SimpleNamespace(bba=1, bbb=2)))
 
-        with only one key it works like normal :function:`python:getattr`:
+        with only one key it works like normal :py:func:`getattr`:
 
         >>> rgetattr(thing, 'a')
         1
@@ -34,11 +34,11 @@ def rgetattr(obj: Any, *keys: Iterable[str]):
 
 
 def rsetattr(obj: Any, keys: Iterable[str], value: Any):
-    """A recursive version of :function:`python:setattr`.
+    """A recursive version of :py:func:`setattr`.
 
     Example:
 
-        Again we'll use :class:`python:types.SimpleNamespace` as a standin for \
+        Again we'll use  :py:class:`types.SimpleNamespace` as a standin for \
         anything with attibute access:
 
         >>> from types import SimpleNamespace
@@ -46,7 +46,7 @@ def rsetattr(obj: Any, keys: Iterable[str], value: Any):
         >>>
         >>> thing = SimpleNamespace()
 
-        with only one key it works like normal :function:`python:setattr`:
+        with only one key it works like normal :py:func:`setattr`:
 
         >>> rsetattr(thing, ['a'], 1)
         >>> thing
@@ -68,7 +68,7 @@ def rsetattr(obj: Any, keys: Iterable[str], value: Any):
 
 
 def rgetitem(obj: Union[Sequence, Mapping], *keys: Iterable[Hashable]):
-    """A recursive version of :function:`python:getitem`.
+    """A recursive version of :py:func:`__getitem__`.
 
     Example:
 
@@ -76,15 +76,18 @@ def rgetitem(obj: Union[Sequence, Mapping], *keys: Iterable[Hashable]):
         >>>
         >>> thing = {'a': 1, 'b': {'ba': 1, 'bb': 2}}
 
-        with only one key it works like normal :function:`python:getitem`:
+        with only one key it works like normal :py:func:`__getitem__`:
+
         >>> rgetitem(thing, 'a')
         1
 
         with multiple ``rgetattr`` gets items recursively:
+
         >>> rgetitem(thing, 'b', 'bb')
         2
 
         works fine with lists and stuff as well:
+
         >>> nested_list = [1, [1, 2, [1, 2, 3]], 2]
         >>> rgetitem(nested_list, -1)
         2
@@ -95,7 +98,7 @@ def rgetitem(obj: Union[Sequence, Mapping], *keys: Iterable[Hashable]):
 
 
 def rsetitem(obj: Union[Sequence, MutableMapping], keys: Iterable[Hashable], value: Any) -> None:
-    """A recursive version of :function:`python:setitem`.
+    """A recursive version of :py:func:`__setitem__`.
 
     Example:
 
@@ -103,22 +106,24 @@ def rsetitem(obj: Union[Sequence, MutableMapping], keys: Iterable[Hashable], val
         >>>
         >>> thing = {'a': 1, 'b': {'ba': 1, 'bb': 2}}
 
-        with only one key it works like normal :function:`python:setitem`:
+        with only one key it works like normal :py:func:`__setitem__`:
+
         >>> rsetitem(thing, ('a',), 2)
         >>> thing
         {'a': 2, 'b': {'ba': 1, 'bb': 2}}
 
         with multiple ``rgetattr`` gets items recursively:
+
         >>> rsetitem(thing, ['b', 'bb'], 4)
         >>> thing
         {'a': 2, 'b': {'ba': 1, 'bb': 4}}
 
         lists and stuff work as expected:
+
         >>> nested_list = [1, [1, 2, [1, 2, 3]], 2]
         >>> rsetitem(nested_list, [-1], 3)
         >>> nested_list
         [1, [1, 2, [1, 2, 3]], 3]
-
         >>> rsetitem(nested_list, [1, 2, 2], 5)
         >>> nested_list
         [1, [1, 2, [1, 2, 5]], 3]
