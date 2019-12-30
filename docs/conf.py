@@ -75,3 +75,5 @@ autodoc_default_flags = [
     "private-members",
     "show-inheritance",
 ]
+
+master_doc = 'index'
