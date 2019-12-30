@@ -14,11 +14,6 @@ collectionish
         :alt: Documentation Status
 
 
-.. image:: https://pyup.io/repos/github/leaprovenzano/collectionish/shield.svg
-     :target: https://pyup.io/repos/github/leaprovenzano/collectionish/
-     :alt: Updates
-
-
 
 more python containers
 
