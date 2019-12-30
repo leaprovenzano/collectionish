@@ -117,3 +117,7 @@ env/
 
 # benchmarks ... for now
 .benchmarks/
+
+
+# ignore doc autosummary
+docs/_autosummary/*
