@@ -36,7 +36,8 @@ setup(
     description="More python collection datatypes and ops for working with them.",
     install_requires=requirements,
     license="MIT license",
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
+    long_description_content_type='text/x-rst',
     include_package_data=True,
     keywords='collectionish',
     name='collectionish',
@@ -45,6 +46,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/leaprovenzano/collectionish',
-    version='0.1.0',
+    version='0.1.1',
     zip_safe=False,
 )

@@ -2,6 +2,12 @@
 History
 =======
 
+0.1.1 (2019-12-30)
+------------------
+
+* various minor fixes to get pypi deployment working.
+
+
 0.1.0 (2019-12-30)
 ------------------
 
