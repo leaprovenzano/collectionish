@@ -1,4 +1,4 @@
-* More Containers version:
+* collectionish version:
 * Python version:
 * Operating System:
 

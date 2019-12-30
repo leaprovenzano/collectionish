@@ -16,7 +16,7 @@ class uniquetuple(Tuple[T, ...]):  # noqa : N801
 
     Example:
 
-        >>> from more_containers import uniquetuple
+        >>> from collectionish import uniquetuple
         >>>
         >>> uniquetuple(3, 2, 3, 1)
         uniquetuple(3, 2, 1)

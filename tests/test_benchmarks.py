@@ -1,6 +1,6 @@
 import random
 
-from more_containers import uniquetuple
+from collectionish import uniquetuple
 
 n = 1000
 unique_unordered_ints = list(range(n))

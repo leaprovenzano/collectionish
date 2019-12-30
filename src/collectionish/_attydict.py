@@ -1,6 +1,6 @@
 from typing import Dict, TypeVar
 
-from more_containers.utils import is_valid_identifier
+from collectionish.utils import is_valid_identifier
 
 T = TypeVar('T')
 
@@ -19,7 +19,7 @@ class attydict(Dict[str, T]):  # noqa : N801
 
         initilize a basic attydict:
 
-        >>> from more_containers import attydict
+        >>> from collectionish import attydict
         >>>
         >>> the_sea = attydict(crabs=10, fish=2)
         >>> the_sea

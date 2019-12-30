@@ -11,7 +11,7 @@ def rgetattr(obj: Any, *keys: Iterable[str]):
         anything with attibute access:
 
         >>> from types import SimpleNamespace
-        >>> from more_containers.ops import rgetattr
+        >>> from collectionish.ops import rgetattr
         >>>
         >>> thing = SimpleNamespace(a=1, b=SimpleNamespace(ba=1, bb=SimpleNamespace(bba=1, bbb=2)))
 
@@ -42,7 +42,7 @@ def rsetattr(obj: Any, keys: Iterable[str], value: Any):
         anything with attibute access:
 
         >>> from types import SimpleNamespace
-        >>> from more_containers.ops import rgetattr
+        >>> from collectionish.ops import rgetattr
         >>>
         >>> thing = SimpleNamespace()
 
@@ -72,7 +72,7 @@ def rgetitem(obj: Union[Sequence, Mapping], *keys: Iterable[Hashable]):
 
     Example:
 
-        >>> from more_containers.ops import rgetitem
+        >>> from collectionish.ops import rgetitem
         >>>
         >>> thing = {'a': 1, 'b': {'ba': 1, 'bb': 2}}
 
@@ -102,7 +102,7 @@ def rsetitem(obj: Union[Sequence, MutableMapping], keys: Iterable[Hashable], val
 
     Example:
 
-        >>> from more_containers.ops import rgetitem
+        >>> from collectionish.ops import rgetitem
         >>>
         >>> thing = {'a': 1, 'b': {'ba': 1, 'bb': 2}}
 
