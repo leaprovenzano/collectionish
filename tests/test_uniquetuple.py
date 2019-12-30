@@ -2,8 +2,8 @@ from typing import Sequence, Hashable, Union
 
 from hypothesis import given, infer
 
-from more_containers import uniquetuple
-from more_containers.types import UniqueTuple
+from collectionish import uniquetuple
+from collectionish.types import UniqueTuple
 
 from tests.utils import param, mark_params
 

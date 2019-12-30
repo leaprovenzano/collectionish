@@ -9,11 +9,11 @@ import pytest
 import hypothesis.strategies as st
 from hypothesis import given
 
-from more_containers.utils import is_valid_identifier
-from more_containers.utils import is_mapping
+from collectionish.utils import is_valid_identifier
+from collectionish.utils import is_mapping
 
 
-from more_containers.ops import rgetattr
+from collectionish.ops import rgetattr
 
 py_names = st.text(string.ascii_lowercase + '_').filter(is_valid_identifier)
 

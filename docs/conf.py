@@ -15,16 +15,16 @@ import sys
 
 sys.path.insert(0, os.path.abspath('../src'))
 
-import more_containers
+import collectionish
 
 # -- Project information -----------------------------------------------------
 
-project = 'more-containers'
+project = 'collectionish'
 copyright = '2019, Lea Provenzano'
-author = more_containers.__author__
+author = collectionish.__author__
 
 # The full version, including alpha/beta/rc tags
-release = more_containers.__version__
+release = collectionish.__version__
 
 
 # -- General configuration ---------------------------------------------------

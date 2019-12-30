@@ -14,11 +14,11 @@ from hypothesis.stateful import (
 )
 
 
-from more_containers import attydict
-from more_containers.types import AttyDict
-from more_containers import ops
+from collectionish import attydict
+from collectionish.types import AttyDict
+from collectionish import ops
 
-from more_containers.utils import is_valid_identifier
+from collectionish.utils import is_valid_identifier
 
 from tests.utils import param, mark_params
 

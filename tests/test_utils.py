@@ -5,8 +5,8 @@ from types import MappingProxyType
 import hypothesis.strategies as st
 from hypothesis import given
 
-from more_containers.utils import is_valid_identifier
-from more_containers.utils import is_mapping, is_arraylike
+from collectionish.utils import is_valid_identifier
+from collectionish.utils import is_mapping, is_arraylike
 
 from tests.utils import param, mark_params
 from tests.strategies import everything_except, one_of_types

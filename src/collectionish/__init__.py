@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""more-containers is a repository of possibly useful, fairly generic container types.
+"""collectionish is a repository of possibly useful, fairly generic container types.
 """
 
 __author__ = """Lea Provenzano"""
