@@ -1,0 +1,5 @@
+pytest
+pytest-runner
+coverage
+hypothesis
+pytest-cov
