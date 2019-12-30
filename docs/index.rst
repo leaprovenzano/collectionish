@@ -15,12 +15,13 @@ Welcome to more-containers's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   containers
-
 .. autosummary::
    :toctree: _autosummary
    
    ops
+   attydict
+   uniquetuple
+
 
 Indices and tables
 ==================
