@@ -14,8 +14,7 @@ from hypothesis.stateful import (
 )
 
 
-from collectionish import attydict
-from collectionish.types import AttyDict
+from collectionish import AttyDict
 from collectionish import ops
 
 from collectionish.utils import is_valid_identifier
@@ -30,7 +29,7 @@ nested_values = st.recursive(
     lambda children: st.one_of(
         st.lists(children, min_size=1),
         st.dictionaries(valid_keys, children, min_size=1),
-        st.dictionaries(valid_keys, children, min_size=1).map(lambda x: attydict(**x)),
+        st.dictionaries(valid_keys, children, min_size=1).map(lambda x: AttyDict(**x)),
     ),
     max_leaves=5,
 )
@@ -39,7 +38,7 @@ nested_values = st.recursive(
 def valid_values(*values) -> bool:
     def valid_value(value):
         if isinstance(v, Mapping):
-            if not isinstance(v, attydict):
+            if not isinstance(v, AttyDict):
                 return False
             return valid_values(value.values())
         elif isinstance(v, (list, tuple, set)):
@@ -68,9 +67,9 @@ def test_typehints(inp):
 @param(tag='deep_nested', inp={'a': {'aa': {'aaa': 1}}})
 @param(tag='mixed', inp={'a': {'aa': 2}, 'b': 2})
 def test_update(inp):
-    """Test an attydict update works just the same as a dict update
+    """Test an AttyDict update works just the same as a dict update
     """
-    atty = attydict(a={'aa': 1, 'ab': 2})
+    atty = AttyDict(a={'aa': 1, 'ab': 2})
     regular = dict(a={'aa': 1, 'ab': 2})
 
     atty.update(**inp)
@@ -82,7 +81,7 @@ def test_update(inp):
 
 @given(st.dictionaries(valid_keys, nested_values))
 def test_init(inp):
-    atty = attydict(**inp)
+    atty = AttyDict(**inp)
     assert valid_values(atty)
     assert dict(atty) == inp
 
@@ -91,7 +90,7 @@ class AttyDictMachine(RuleBasedStateMachine):
 
     def __init__(self):
         super().__init__()
-        self.atty = attydict()
+        self.atty = AttyDict()
         self.shadow = dict()
         self.change = 0
         print()
@@ -104,12 +103,12 @@ class AttyDictMachine(RuleBasedStateMachine):
         return k
 
     @precondition(
-        lambda self: len([k for k, v in self.atty.items() if isinstance(v, attydict)]) > 0
+        lambda self: len([k for k, v in self.atty.items() if isinstance(v, AttyDict)]) > 0
     )
     @rule(target=keys, existing=st.data(), k=valid_keys)
     def add_nested_key(self, existing, k):
         ex = existing.draw(
-            st.sampled_from([k for k, v in self.atty.items() if isinstance(v, attydict)])
+            st.sampled_from([k for k, v in self.atty.items() if isinstance(v, AttyDict)])
         )
         return (ex, k)
 

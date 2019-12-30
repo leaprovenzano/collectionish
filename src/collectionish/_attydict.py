@@ -5,7 +5,7 @@ from collectionish.utils import is_valid_identifier
 T = TypeVar('T')
 
 
-class attydict(Dict[str, T]):  # noqa : N801
+class AttyDict(Dict[str, T]):
 
     """A lightweight dictionary with dot access.
 
@@ -19,9 +19,9 @@ class attydict(Dict[str, T]):  # noqa : N801
 
         initilize a basic attydict:
 
-        >>> from collectionish import attydict
+        >>> from collectionish import AttyDict
         >>>
-        >>> the_sea = attydict(crabs=10, fish=2)
+        >>> the_sea = AttyDict(crabs=10, fish=2)
         >>> the_sea
         {'crabs': 10, 'fish': 2}
 
@@ -89,7 +89,3 @@ class attydict(Dict[str, T]):  # noqa : N801
     def update(self, **kwargs):
         for k, v in kwargs.items():
             self[k] = v
-
-
-# alias as lower
-AttyDict = attydict

@@ -5,7 +5,7 @@ History
 0.1.0 (???-??-??)
 ------------------
 
-* ``uniquetuple``
+* ``UniqueTuple``
 * benchmarking via pytest-benchmark
-* ``attydict``
+* ``AttyDict``
 * ``ops``module w/ recursive gettattr and setattr functions.

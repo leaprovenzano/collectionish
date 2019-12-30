@@ -19,8 +19,8 @@ Welcome to collectionish's documentation!
    :toctree: _autosummary
    
    ops
-   attydict
-   uniquetuple
+   AttyDict
+   UniqueTuple
 
 
 Indices and tables

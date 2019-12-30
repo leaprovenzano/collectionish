@@ -1,6 +1,6 @@
 import random
 
-from collectionish import uniquetuple
+from collectionish import UniqueTuple
 
 n = 1000
 unique_unordered_ints = list(range(n))
@@ -10,19 +10,19 @@ repeated_unordered_ints = [random.choice(unique_unordered_ints[:100]) for i in r
 
 def test_benchmark_uniquetuple1(benchmark):
 
-    benchmark.group = 'uniquetuple.unique_unordered'
+    benchmark.group = 'UniqueTuple.unique_unordered'
 
     def f():
-        lambda: uniquetuple(*unique_unordered_ints)
+        lambda: UniqueTuple(*unique_unordered_ints)
 
     return benchmark(f)
 
 
 def test_benchmark_uniquetuple2(benchmark):
 
-    benchmark.group = 'uniquetuple.repeated_unordered'
+    benchmark.group = 'UniqueTuple.repeated_unordered'
 
     def f():
-        return uniquetuple(*repeated_unordered_ints)
+        return UniqueTuple(*repeated_unordered_ints)
 
     return benchmark(f)
