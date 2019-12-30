@@ -7,7 +7,7 @@ collectionish
         :target: https://pypi.python.org/pypi/collectionish
 
 .. image:: https://img.shields.io/travis/leaprovenzano/collectionish.svg
-        :target: https://travis-ci.org/leaprovenzano/collectionish
+        :target: https://travis-ci.com/leaprovenzano/collectionish
 
 .. image:: https://readthedocs.org/projects/collectionish/badge/?version=latest
         :target: https://collectionish.readthedocs.io/en/latest/?badge=latest
