@@ -93,7 +93,6 @@ class AttyDictMachine(RuleBasedStateMachine):
         self.atty = AttyDict()
         self.shadow = dict()
         self.change = 0
-        print()
 
     keys = Bundle('keys')
     values = Bundle('values')
