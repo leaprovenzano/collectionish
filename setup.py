@@ -33,7 +33,10 @@ setup(
         'Programming Language :: Python :: 3 :: Only',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    description="More python collection datatypes and ops for working with them.",
+    description=(
+        "Collectionish is a pure python library extending the basic collection data types"
+        " and operations for working with them."
+    ),
     install_requires=requirements,
     license="MIT license",
     long_description=readme,

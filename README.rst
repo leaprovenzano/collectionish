@@ -1,7 +1,6 @@
-===============
+=============
 collectionish
-===============
-
+=============
 
 .. image:: https://img.shields.io/pypi/v/collectionish.svg
         :target: https://pypi.python.org/pypi/collectionish
@@ -14,10 +13,11 @@ collectionish
         :alt: Documentation Status
 
 
-
-More python collection datatypes and ops for working with them.
-
+----
 
 * Free software: MIT license
 * Documentation: https://collectionish.readthedocs.io.
-* 
+
+----
+
+Collectionish is a pure python library extending the basic collection data types and operations for working with them.
