@@ -1,12 +1,24 @@
 language: python
+cache:
+  directories:
+    - $HOME/.cache/pip
 python:
-- 3.7.5
-- 3.7.6
-- '3.8'
+  - 3.7.5
+  - 3.7.6
+  - '3.8'
 install:
-- pip install -r requirements/test.txt
-- pip install .
-script: pytest
+  - pip install -r requirements/test.txt
+  - pip install -r requirements/dev.txt
+  - pip install .
+script:
+  #lint stuff
+  - flake8
+  # type checks
+  - mypy src/collectionish
+  # actual tests
+  - pytest
+  # test that if we tried build a dist it would actually work
+  - make dist && twine check dist/*
 deploy:
   provider: pypi
   user: "__token__"
