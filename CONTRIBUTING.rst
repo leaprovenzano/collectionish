@@ -1,130 +1,152 @@
-.. highlight:: shell
+.. _issues: https://github.com/leaprovenzano/collectionish/issues
 
 ============
 Contributing
 ============
 
-Contributions are welcome, and they are greatly appreciated! Every little bit
-helps, and credit will always be given.
-
-You can contribute in many ways:
-
-Types of Contributions
+Step 1 : File an issue
 ----------------------
 
-Report Bugs
-~~~~~~~~~~~
+All contributions (with the possible exception of minor documentation changes) should start in `issues`_ .
+Hashing out changes and discussion an issue means no ones time is wasted writing PRs that are not accepted.
 
-Report bugs at https://github.com/leaprovenzano/collectionish/issues.
+If you'd like to work on your issue please be sure and mention that when you create it.
+That way we can assign it to you once the work is accepted.
 
-If you are reporting a bug, please include:
+Report Bugs:
+~~~~~~~~~~~~
+
+Report bugs in our `issues`_. If you are reporting a bug, please include:
 
 * Your operating system name and version.
-* Any details about your local setup that might be helpful in troubleshooting.
-* Detailed steps to reproduce the bug.
+* Any details about your local setup that might be helpful in troubleshooting. This must include your version of python and collectionish
+* A minimal example that will reproduce the bug.
 
-Fix Bugs
-~~~~~~~~
 
-Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
-wanted" is open to whoever wants to implement it.
+Suggest featues:
+~~~~~~~~~~~~~~~~
 
-Implement Features
-~~~~~~~~~~~~~~~~~~
+Suggest features in our `issues`_. PRs for new features will not be accepted without some discussion in an issue.
+Feature suggestions should include details of the feature and why you think it would be useful.
 
-Look through the GitHub issues for features. Anything tagged with "enhancement"
-and "help wanted" is open to whoever wants to implement it.
+A really nice way of outlining a bit of new functionality is to write a little type-hinted stub with a (preferably google style) docstring including
+doctest examples. Contributors are encouraged to suggest features in this way.
 
-Write Documentation
-~~~~~~~~~~~~~~~~~~~
+For example lets say i want to suggest a function ``depth`` which will give me the max depth of a nested mapping,
+I might include a stub like this when i create my issue:
 
-collectionish could always use more documentation, whether as part of the
-official collectionish docs, in docstrings, or even on the web in blog posts,
-articles, and such.
+.. code:: python
 
-Submit Feedback
-~~~~~~~~~~~~~~~
+    from typing import Collection
 
-The best way to send feedback is to file an issue at https://github.com/leaprovenzano/collectionish/issues.
+    def depth(thing: Collection) -> int:
+        """Get the max depth of a given Collection.
 
-If you are proposing a feature:
+        Depth here is defined as the maximum degree of nestedness of a collection type.
+        you can think of it as how many times `__getitem__` would need to be called to
+        get to the deepest object.
 
-* Explain in detail how it would work.
-* Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
-  are welcome :)
+        Example:
 
-Get Started!
-------------
+            >>> from collectionish.ops import depth
+            >>>
+            >>> thing = {'a': 1, 'b': {'ba': 1, 'bb': 2}}
+            >>> depth(thing)
+            2
 
-Ready to contribute? Here's how to set up `collectionish` for local development.
+            flat mappings have a depth of 1
+
+            >>> depth({'a': 1, 'b': 2})
+            1
+
+            arrays work just as well
+
+            >>> depth([ 1, 2, [1, [ 1, 2]]])
+            3
+
+            but note that strings are containers and so will count towards depth!
+
+            >>> depth(['list', 'of', 'strings'])
+            2
+
+        """
+        ...
+
+
+
+Existing Issues:
+~~~~~~~~~~~~~~~~
+
+If you see a "help wanted" tag and want to work on it just give us a shout and we will assign it to you.
+
+
+Pull Requests:
+--------------
+
+If you've been assigned an issue and you'd like to get started here's how to go about making a PR:
+
+
+Setting up for local development:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Fork the `collectionish` repo on GitHub.
 2. Clone your fork locally::
 
     $ git clone git@github.com:your_name_here/collectionish.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a virtualenv::
 
-    $ mkvirtualenv collectionish
-    $ cd collectionish/
-    $ python setup.py develop
+    $ python3 -m collectionish/env
+    $ cd collectionish
+    $ source env/bin/activate
+    $ pip install -e .
 
-4. Create a branch for local development::
+4. You'll also want to install some dev dependencies.
+   We seperate in the requirements directory into test, docs, & dev for the sake of CI.
+   To install all the dependencies you can simply::
 
-    $ git checkout -b name-of-your-bugfix-or-feature
+    $ pip install -r requirements/all.txt
 
-   Now you can make your changes locally.
+3. Install the pre-commit hooks. These will reformat your code using lea's special version of black
+   do mypy and pep8 checks and generally complain at you if you try and commit something they hate. Doing
+   This means that stuff will be formatted correctly and will not set off linting errors in your PR::
 
-5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
+   $ pip install pre-commit
+   $ pre-commit install
 
-    $ flake8 collectionish tests
-    $ python setup.py test or pytest
-    $ tox
+PR Guidelines:
+~~~~~~~~~~~~~~
 
-   To get flake8 and tox, just pip install them into your virtualenv.
+* PR's should contain one and only one logical change. It's perfectly fine to open multiple PRs (or multiple issues) for a large bit of work.
 
-6. Commit your changes and push your branch to GitHub::
+* PR's should not change or add anything not referenced in the original Issue
 
-    $ git add .
-    $ git commit -m "Your detailed description of your changes."
-    $ git push origin name-of-your-bugfix-or-feature
+* PR's should usually contain a little description of the changes for reviewers to read
+  and should always link to the original issue.
 
-7. Submit a pull request through the GitHub website.
+* All features and bug fixes must have a user friendly high level description of the changes
+  entered into the /HISTORY.rst.If a new version will be created make it in the same format
+  you see below. This is currently a bit annoying but we will work out a better solution soon.
 
-Pull Request Guidelines
------------------------
+* All new public functions and classes code must have docstrings in the google style. Most docstrings should
+  include examples.
 
-Before you submit a pull request, check that it meets these guidelines:
+* All new features must have tests and all bug fixes must provide regression tests.
 
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.7, 3.5, 3.6 and 3.7, and for PyPy. Check
-   https://travis-ci.org/leaprovenzano/collectionish/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+* Type hints should be added wherever possible.
 
-Tips
-----
+* New Contributors should update the AUTHORS.rst with their name in the contributors section.
 
-To run a subset of tests::
-  
-  $ py.test tests.test_collectionish
+* All features and bugfixes must have a user friendly high level description of the changes
+  entered into the HISTORY.rst
 
-    $ pytest tests.test_collectionish
+* Make a sensible branch name. it's also encouraged to use the following prefixes::
 
+    feature/
+    bugfix/
 
-Deploying
----------
+* Make decent descriptive commit messages.
 
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
+* Try and keep commits small. This is particularly true when pre-commit hooks in place.
 
-$ bump2version patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-
-Travis will then deploy to PyPI if tests pass.
+* Documentation updates may not need several of the above requirements and can PRS can be opened without an issue.

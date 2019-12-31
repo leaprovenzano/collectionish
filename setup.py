@@ -8,10 +8,6 @@ from setuptools import setup, find_packages
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
-
-
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
@@ -33,7 +29,10 @@ setup(
         'Programming Language :: Python :: 3 :: Only',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    description="More python collection datatypes and ops for working with them.",
+    description=(
+        "Collectionish is a pure python library extending the basic collection data types"
+        " and operations for working with them."
+    ),
     install_requires=requirements,
     license="MIT license",
     long_description=readme,
