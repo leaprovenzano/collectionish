@@ -2,6 +2,13 @@
 History
 =======
 
+0.1.2 (2019-12-31)
+------------------
+
+* Documentation upates to readme and contibution guidelines
+* CI improvements
+
+
 0.1.1 (2019-12-30)
 ------------------
 
