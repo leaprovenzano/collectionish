@@ -1,10 +1,7 @@
 bumpversion
 watchdog
 
-
-# packaging and builds
 twine
-tox
 
 # linting
 flake8>=3.5.0
