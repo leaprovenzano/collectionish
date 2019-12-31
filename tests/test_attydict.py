@@ -122,7 +122,7 @@ class AttyDictMachine(RuleBasedStateMachine):
     @rule(k=consumes(keys), v=consumes(values))
     def set_as_attr(self, k, v):
         if isinstance(k, tuple):
-            assume(k[0] in self.atty)
+            assume(k[0] in self.atty and isinstance(self.atty[k[0]], AttyDict))
             ops.rsetattr(self.atty, k, deepcopy(v))
             ops.rsetitem(self.shadow, k, deepcopy(v))
         else:
@@ -134,7 +134,7 @@ class AttyDictMachine(RuleBasedStateMachine):
     @rule(k=consumes(keys), v=consumes(values))
     def set_as_key(self, k, v):
         if isinstance(k, tuple):
-            assume(k[0] in self.atty)
+            assume(k[0] in self.atty and isinstance(self.atty[k[0]], AttyDict))
             ops.rsetitem(self.atty, k, v)
             ops.rsetitem(self.shadow, k, deepcopy(v))
         else:
