@@ -1,29 +1,25 @@
 language: python
 cache:
   directories:
-    - $HOME/.cache/pip
+  - "$HOME/.cache/pip"
 python:
-  - 3.7.5
-  - 3.7.6
-  - '3.8'
+- 3.7.5
+- 3.7.6
+- '3.8'
 install:
-  - pip install -r requirements/test.txt
-  - pip install -r requirements/dev.txt
-  - pip install .
+- pip install -r requirements/test.txt
+- pip install -r requirements/dev.txt
+- pip install .
 script:
-  #lint stuff
-  - flake8
-  # type checks
-  - mypy src/collectionish
-  # actual tests
-  - pytest
-  # test that if we tried build a dist it would actually work
-  - make dist && twine check dist/*
+- flake8
+- mypy src/collectionish
+- pytest
+- make dist && twine check dist/*
 deploy:
   provider: pypi
-  user: "__token__"
+  user: __token__
   password:
-    secure: Qoy3sg/oRKDTSFHnUxC4Wr3hCMuspgRDr3+mJETHWG3IloHUNaQmaYdaRx+DjNvF6ncXTDQc+B0BHWby5L/Rji/2GdNUR5DPno2wuBAk1upPBE/OqT1snBCXtPJ7BGhpWZNHhR5XH4bjrQdtfU7v6ApYpuR034el7GHrpRs/Pj2Ya9C1C6Ur0/MGy9ZO4/mDXMzkms6yfdDIzUwoSwPOKfaT2nnkVxgfupvS0dOwI+Qp7PHjWPXtQLC0hk8SFJaBmq8S76P7D6dT0elCJxWhf9Y4wqH8o8SWyQg9TnZnzAQyCWLgTTGamv3NHOOD/fG+yeZrXl0e8UuDUjnNLUb5CitIIzvZPU49CQXYOU1wGHpE/RFMlBAN7R+fhgt35LTlRQrCZsTk+BdqWuwX3DbtDVRIonelxonlwIcmcOHu01W+rcrKonDFas+crVO+8k5Xn3HwG2q8OJPnRr1C0ND/ifwvw4BEAI/QOt7+qDNBPcf48VXpnzG3FXRA9992njNqyyxDOR6D49WDTfvEKD3+tWhkk/hGYzjhNrXItY/bUZSd8HypaOWz0qXoy/xE6WVKj3aFaRqn7XiWuIf45KE3qRmN+lGL3t61CuKShDes/D6ZUw+0uu6DuYHDBgWGAQ9RCpwasRAXEBQOWs2qahgYn0q/KulxnqlmFog6CW6wJiE=
+    secure: N8TA3ZIf1iI21WuhkuUqmC6tZbvR4WFe1Fmun8x7Jk0Cu0l54kSPFnBSaP+NtHJueFLhUVzl3voYDAQMnEleZWXRd/RKLr63KEDaIHUksW/fWzJiYxcSxpcMKPVtq+t5G4kgiKmanp6pSC7DwIk8mkhkIEMhKCeA+N85Ob0TGHvLug5uxSbM1n5A5YsNyt0KkOteb5qtcJdaqnfcL5suYEWSB3eWGB65jWbnULlDl0I0NG6HtNimeGHG8uJvasvhmxWO6nqTaaAo7iQw1B722OJaZo70k4oce9ZThw5pt5KXx1PMFpaROa4ckRFt/AM8NWunjw3KuVbpbc4zIxJbzEdIWMuFsEyV3jV1vSuzl80nymr/ojjxdNCxCHzb9b8LHH1T7axpwHc+PKxuU0Lcvupr9HcQARuhBrUZPd2R3xhkxrWHVwnadP5If+dZCut9+FsJs5/GVoYkaAduKmSEQJ/KviXJmp+f0e2C/4ktSweW6mqPULcJN/jl3OgSFcbSpCdB/3hh6cCZ6xay/aPIL+yyGXeH14qr+ZFKFvUWqJeYxSSgMochiuCQeXijSaKdCxouQZT5/rNZtPht5kq2xBCbnGvjO8RFWA/Vn6lm3+G2WnkfUdc1lxCBNdTJtVOc8fsqICNPaIfddsvN2LMTcT+4+XD+FeLd6GeA+a7rmFM=
   skip_existing: true
   on:
     tags: true
