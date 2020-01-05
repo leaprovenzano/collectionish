@@ -12,6 +12,10 @@ collectionish
         :target: https://collectionish.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
+.. image:: https://codecov.io/gh/leaprovenzano/collectionish/branch/master/graph/badge.svg
+        :target: :target: https://codecov.io/gh/leaprovenzano/collectionish
+        :alt: CodeCov Report
+
 ----
 
 * Free software: MIT license
