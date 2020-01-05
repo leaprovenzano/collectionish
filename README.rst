@@ -3,22 +3,24 @@ collectionish
 =============
 
 .. image:: https://img.shields.io/pypi/v/collectionish.svg
-        :target: https://pypi.python.org/pypi/collectionish
+	:target: https://pypi.python.org/pypi/collectionish
+	:alt: pypi version
 
 .. image:: https://img.shields.io/travis/leaprovenzano/collectionish.svg
-        :target: https://travis-ci.com/leaprovenzano/collectionish
+	:target: https://travis-ci.com/leaprovenzano/collectionish
+	:alt: travis build
 
 .. image:: https://readthedocs.org/projects/collectionish/badge/?version=latest
-        :target: https://collectionish.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
+	:target: https://collectionish.readthedocs.io/en/latest/?badge=latest
+	:alt: documentation status
 
 .. image:: https://codecov.io/gh/leaprovenzano/collectionish/branch/master/graph/badge.svg
-        :target: :target: https://codecov.io/gh/leaprovenzano/collectionish
-        :alt: CodeCov Report
+	:target: https://codecov.io/gh/leaprovenzano/collectionish
+	:alt: coverage
 
 .. image:: https://img.shields.io/badge/hypothesis-tested-brightgreen.svg
-   :alt: Tested with Hypothesis
-   :target: https://hypothesis.readthedocs.io
+	:target: https://hypothesis.readthedocs.io
+	:alt: hypothesis tested
 
 ----
 
