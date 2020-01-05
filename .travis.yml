@@ -15,6 +15,5 @@ script:
 - flake8
 - mypy src/collectionish
 - pytest
-- make dist && twine check dist/*
 after_success:
 - codecov
