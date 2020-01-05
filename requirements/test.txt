@@ -3,3 +3,4 @@ coverage
 hypothesis
 pytest-cov
 pytest-benchmark
+pytest-subtests
