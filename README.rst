@@ -16,6 +16,10 @@ collectionish
         :target: :target: https://codecov.io/gh/leaprovenzano/collectionish
         :alt: CodeCov Report
 
+.. image:: https://img.shields.io/badge/hypothesis-tested-brightgreen.svg
+   :alt: Tested with Hypothesis
+   :target: https://hypothesis.readthedocs.io
+
 ----
 
 * Free software: MIT license
