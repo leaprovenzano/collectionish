@@ -6,6 +6,8 @@ History
 ------------------
 
 * Add ``Sentry`` : a falsey singleton for where none means something
+* CI Improvement: Add codecov to travis.
+
 
 0.1.2 (2019-12-31)
 ------------------
