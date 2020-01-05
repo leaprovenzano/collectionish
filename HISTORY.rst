@@ -2,6 +2,11 @@
 History
 =======
 
+0.2.0 (2020-01-??)
+------------------
+
+* Add ``Sentry`` : a falsey singleton for where none means something
+
 0.1.2 (2019-12-31)
 ------------------
 

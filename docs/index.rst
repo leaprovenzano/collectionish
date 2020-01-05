@@ -21,6 +21,7 @@ Welcome to collectionish's documentation!
    ops
    AttyDict
    UniqueTuple
+   Sentry
 
 
 Indices and tables
