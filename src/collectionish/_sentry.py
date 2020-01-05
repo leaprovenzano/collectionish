@@ -3,15 +3,15 @@ from typing import Any, ClassVar, Optional
 
 class Sentry:
 
-    """A Basic falsey singleton type useful for when None means something.
+    """A Basic falsey singleton type useful for when ``None`` actually means something.
 
     Only one instance of Sentry may be created (within a session).
     To prevent weirdness in with import reloads or multiprocessing we test equality /
     based on is tested based on class membership and disallow subclassing.
 
-    Sentry objects forbid the following:
+    The following actions are is forbidden on the Sentry type:
         - subclassing
-        - setting attributes.
+        - setting attributes
     """
 
     __slots__ = ()
