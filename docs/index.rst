@@ -17,9 +17,10 @@ Welcome to collectionish's documentation!
 
 .. autosummary::
    :toctree: _autosummary
-   
+
    ops
    AttyDict
+   AncestorChainMap
    UniqueTuple
    Sentry
 
