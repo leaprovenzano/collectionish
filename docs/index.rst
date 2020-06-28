@@ -17,6 +17,7 @@ Welcome to collectionish's documentation!
 
 .. autosummary::
    :toctree: _autosummary
+   :template: base.rst
 
    ops
    AttyDict

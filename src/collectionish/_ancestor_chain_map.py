@@ -14,11 +14,13 @@ class AncestorChainMap(ChainMap):
         AncestorChainMap({'b': 3, 'c': 3})
 
         add oldest ancestor:
+
         >>> child.add_ancestor({'a': 1, 'b': 1})
         >>> child
         AncestorChainMap({'b': 3, 'c': 3}, {'a': 1, 'b': 1})
 
         add direct parent:
+
         >>> child.add_parent({'a': 2, 'b': 2})
         >>> child
         AncestorChainMap({'b': 3, 'c': 3}, {'a': 2, 'b': 2}, {'a': 1, 'b': 1})
