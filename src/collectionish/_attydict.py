@@ -39,7 +39,8 @@ class AttyDict(Dict[str, T]):
         >>> the_sea.submarines.actual
         1
 
-        we handle name clashes in a similar way to pandas - Reserved names can be set using standard dict access:
+        we handle name clashes in a similar way to pandas - Reserved names can be set using
+        standard dict access:
 
         >>> the_sea['pop'] = 'corn'
         >>> the_sea

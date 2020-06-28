@@ -16,7 +16,8 @@ def is_mapping(obj: Any) -> bool:
 
 
 def is_arraylike(obj: Any) -> bool:
-    """Determine if the provided object is an non-mapping generic container type such as an array, tuple or set.
+    """Determine if the provided object is an non-mapping generic container type such as an array,\
+     tuple or set.
 
     Example:
         >>> from collectionish.utils import is_arraylike
