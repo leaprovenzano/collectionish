@@ -2,6 +2,11 @@
 History
 =======
 
+v0.2.1
+------
+
+* Fix failing docs build.
+
 v0.2.0
 ------
 

@@ -19,7 +19,7 @@
 
    {% block attributes %}
    {% if attributes %}
-   .. rubric:: {{ _('Attributes:') }}
+   .. rubric:: Attributes:
    .. autosummary::
    {% for item in attributes %}
       ~{{ name }}.{{ item }}
@@ -34,5 +34,3 @@
     :members:
 
 {% endif %}
-
-
