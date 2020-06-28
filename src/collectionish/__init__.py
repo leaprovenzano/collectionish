@@ -5,8 +5,9 @@
 
 __author__ = """Lea Provenzano"""
 __email__ = 'leaprovenzano@gmail.com'
-__version__ = '0.1.2'
+__version__ = '0.2.0'
 
 from ._uniquetuple import UniqueTuple
 from ._attydict import AttyDict
 from ._sentry import Sentry
+from ._ancestor_chain_map import AncestorChainMap

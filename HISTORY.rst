@@ -2,11 +2,12 @@
 History
 =======
 
-0.2.0 (2020-01-??)
-------------------
+v0.2.0
+------
 
 * Add ``Sentry`` : a falsey singleton for where none means something
-* CI Improvement: Add codecov to travis.
+* Add ``AncestorChainMap`` : a ``ChainMap`` with extra methods for insertion of parents and ancestors
+* Improve formatting in docs.
 
 
 0.1.2 (2019-12-31)
