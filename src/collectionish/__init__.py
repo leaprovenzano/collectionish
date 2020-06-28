@@ -10,3 +10,4 @@ __version__ = '0.1.2'
 from ._uniquetuple import UniqueTuple
 from ._attydict import AttyDict
 from ._sentry import Sentry
+from ._ancestor_chain_map import AncestorChainMap
