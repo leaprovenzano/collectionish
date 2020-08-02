@@ -5,6 +5,15 @@ from collectionish.utils import is_valid_identifier
 T = TypeVar('T')
 
 
+def _unpack_args(iterable_or_mapping=None, **kwargs):
+    if iterable_or_mapping:
+        if isinstance(iterable_or_mapping, dict):
+            yield from iterable_or_mapping.items()
+        else:
+            yield from iterable_or_mapping
+    yield from kwargs.items()
+
+
 class AttyDict(Dict[str, T]):
 
     """A lightweight dictionary with dot access.
@@ -66,8 +75,8 @@ class AttyDict(Dict[str, T]):
                 return cls(**value)
         return value
 
-    def __init__(self, **kwargs):
-        for k, v in kwargs.items():
+    def __init__(self, iterable_or_mapping=None, **kwargs):
+        for k, v in _unpack_args(iterable_or_mapping, **kwargs):
             self.__setitem__(k, v)
 
     def _validate_key(self, s: str):
