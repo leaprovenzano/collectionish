@@ -2,6 +2,13 @@
 History
 =======
 
+v0.3.0
+------
+
+* Allow initilization of ``AttyDict`` from mapping or iterable instead of just kwargs. This aligns
+``AttyDict`` init to be the same as to standard dictionary initilization.
+
+
 v0.2.1
 ------
 

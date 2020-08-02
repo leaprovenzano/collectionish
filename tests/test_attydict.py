@@ -2,6 +2,8 @@ from typing import Union, Mapping
 from copy import deepcopy
 import string
 
+import pytest
+
 from hypothesis import given, assume
 from hypothesis import strategies as st
 from hypothesis.stateful import (
@@ -87,11 +89,10 @@ def test_init(inp):
 
 
 class AttyDictMachine(RuleBasedStateMachine):
-
     def __init__(self):
         super().__init__()
         self.atty = AttyDict()
-        self.shadow = dict()
+        self.shadow = {}
         self.change = 0
 
     keys = Bundle('keys')
@@ -152,3 +153,31 @@ class AttyDictMachine(RuleBasedStateMachine):
 
 
 TestAttyDict = AttyDictMachine.TestCase
+
+
+@pytest.mark.parametrize('kwargs,', [{}, {'c': 3}])
+@pytest.mark.parametrize(
+    'args,', [None, {'a': 1, 'b': 2}, {'a': 1, 'b': 2}.items(), (('a', 1), ('b', 2))],
+)
+def test_init_from_args_kwargs(args, kwargs):
+    if args is not None:
+
+        expected_dict = dict(args, **kwargs)
+        attydict = AttyDict(args, **kwargs)
+    else:
+
+        expected_dict = dict(**kwargs)
+        attydict = AttyDict(**kwargs)
+
+    for k, v in expected_dict.items():
+        assert getattr(attydict, k) == attydict[k] == v
+
+
+def test_from_zip():
+    # i'm prettysure parametrize is fucking with this zip
+    # so we add a manual test
+    expected_dict = {'a': 1, 'b': 2, 'c': 3}
+    attydict = AttyDict(zip(['a', 'b', 'c'], [1, 2, 3]))
+
+    for k, v in expected_dict.items():
+        assert getattr(attydict, k) == attydict[k] == v

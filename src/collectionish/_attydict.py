@@ -1,8 +1,18 @@
-from typing import Dict, TypeVar
+from typing import Dict, TypeVar, Iterable, Mapping, Optional, Tuple, Union
 
 from collectionish.utils import is_valid_identifier
 
 T = TypeVar('T')
+InitFromT = Union[Mapping[str, T], Iterable[Tuple[str, T]]]
+
+
+def _unpack_args(iterable_or_mapping: Optional[InitFromT] = None, **kwargs):
+    if iterable_or_mapping:
+        if isinstance(iterable_or_mapping, dict):
+            yield from iterable_or_mapping.items()
+        else:
+            yield from iterable_or_mapping
+    yield from kwargs.items()
 
 
 class AttyDict(Dict[str, T]):
@@ -66,8 +76,8 @@ class AttyDict(Dict[str, T]):
                 return cls(**value)
         return value
 
-    def __init__(self, **kwargs):
-        for k, v in kwargs.items():
+    def __init__(self, iterable_or_mapping: Optional[InitFromT] = None, **kwargs):
+        for k, v in _unpack_args(iterable_or_mapping, **kwargs):
             self.__setitem__(k, v)
 
     def _validate_key(self, s: str):
