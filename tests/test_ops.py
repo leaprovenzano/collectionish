@@ -9,11 +9,9 @@ import pytest
 import hypothesis.strategies as st
 from hypothesis import given
 
-from collectionish.utils import is_valid_identifier
-from collectionish.utils import is_mapping
-
-
-from collectionish.ops import rgetattr
+from collectionish import AttyDict
+from collectionish.utils import is_valid_identifier, is_mapping
+from collectionish.ops import rgetattr, flatten_mapping
 
 py_names = st.text(string.ascii_lowercase + '_').filter(is_valid_identifier)
 
@@ -25,7 +23,6 @@ class Pair(NamedTuple):
 
 
 class Thing(SimpleNamespace):
-
     @classmethod
     def from_dict(cls, dct: Dict[str, Any]) -> 'Thing':
         kwargs = {}
@@ -62,3 +59,21 @@ def test_rgetattr_raises_on_invalid(thing, data):
     path, _ = data.draw(st.sampled_from(list(thing.paths())))
     with pytest.raises(AttributeError):
         rgetattr(thing, *path, 'bullshit')
+
+
+def test_flatten_attydict_with_keeptype_and_dot_delim_raises_error():
+    attydict = AttyDict(this={'nested': {'number': 1, 'name': 'teddy'}}, other=2)
+    expect_msg = (
+        'cannot use dot delimiter with AttyDict'
+        ' try specifying a different delimiter such as an underscore'
+        ' or set keep_type to False to return a regular dict.'
+    )
+    with pytest.raises(TypeError, match=expect_msg):
+        flatten_mapping(attydict, keep_type=True)
+
+
+def test_flatten_attydict_with_keeptype_and_underscore_delim_is_fine():
+    attydict = AttyDict(this={'nested': {'number': 1, 'name': 'teddy'}}, other=2)
+    flat = flatten_mapping(attydict, keep_type=True, delimiter='_')
+    assert isinstance(flat, AttyDict)
+    assert flat == AttyDict(this_nested_number=1, this_nested_name='teddy', other=2)
