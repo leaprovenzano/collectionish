@@ -30,7 +30,7 @@ def validate_identifier_as_ast(s: str):
     assert name.id == s
 
 
-@given(st.text(alphabet=st.characters(max_codepoint=255)))
+@given(st.text(alphabet=st.characters(max_codepoint=128)))
 def test_is_valid_identifier(s):
     if is_valid_identifier(s):
         validate_identifier_as_ast(s)
