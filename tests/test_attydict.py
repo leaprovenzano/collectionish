@@ -69,8 +69,7 @@ def test_typehints(inp):
 @param(tag='deep_nested', inp={'a': {'aa': {'aaa': 1}}})
 @param(tag='mixed', inp={'a': {'aa': 2}, 'b': 2})
 def test_update(inp):
-    """Test an AttyDict update works just the same as a dict update
-    """
+    """Test an AttyDict update works just the same as a dict update"""
     atty = AttyDict(a={'aa': 1, 'ab': 2})
     regular = dict(a={'aa': 1, 'ab': 2})
 
@@ -81,7 +80,7 @@ def test_update(inp):
     assert dict(atty) == regular
 
 
-@given(st.dictionaries(valid_keys, nested_values))
+@given(st.dictionaries(valid_keys, nested_values, max_size=5))
 def test_init(inp):
     atty = AttyDict(**inp)
     assert valid_values(atty)
@@ -157,7 +156,8 @@ TestAttyDict = AttyDictMachine.TestCase
 
 @pytest.mark.parametrize('kwargs,', [{}, {'c': 3}])
 @pytest.mark.parametrize(
-    'args,', [None, {'a': 1, 'b': 2}, {'a': 1, 'b': 2}.items(), (('a', 1), ('b', 2))],
+    'args,',
+    [None, {'a': 1, 'b': 2}, {'a': 1, 'b': 2}.items(), (('a', 1), ('b', 2))],
 )
 def test_init_from_args_kwargs(args, kwargs):
     if args is not None:
