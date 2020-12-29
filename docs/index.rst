@@ -1,34 +1,30 @@
-.. collectionish documentation master file, created by
-   sphinx-quickstart on Mon Dec 30 09:45:19 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. include:: readme.rst
 
-Welcome to collectionish's documentation!
-===========================================
-
-.. include:: ../README.rst
+---
 
 .. currentmodule:: collectionish
 
+.. autosummary::
+   :caption: API:
+   :toctree: _autosummary
+
+   AncestorChainMap
+   AttyDict
+   Sentry
+   UniqueTuple
+   ops
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Other Stuff:
 
-.. autosummary::
-   :toctree: _autosummary
-   :template: base.rst
+   contributing
+   authors
 
-   ops
-   AttyDict
-   AncestorChainMap
-   UniqueTuple
-   Sentry
 
 
 Indices and tables
 ==================
-
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`

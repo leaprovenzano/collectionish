@@ -54,13 +54,12 @@ lint: ## check style with flake8
 	flake8 src/collectionish tests
 
 test: ## run tests quickly with the default Python
-	pytest --cov collectionish --benchmark-compare
+	pytest
 
 test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source src/collectionish -m pytest
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
@@ -70,7 +69,9 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
 
+
 release: dist ## package and upload a release
+	twine check dist/*
 	twine upload dist/*
 
 dist: clean ## builds source and wheel package
@@ -85,8 +86,6 @@ install-local: clean ## install the package to the active Python's site-packages
 	pip install -e .
 
 install-dev: install-local ## setup all
+	pip install wheel
 	pip install -r requirements/all.txt
 	pre-commit install
-
-
-
