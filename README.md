@@ -4,7 +4,7 @@ Collectionish is a pure python library extending the basic collection data types
 
 ----
 [![pypi version](https://img.shields.io/pypi/v/collectionish.svg)](https://pypi.python.org/pypi/collectionish)
-[![travis build](https://img.shields.io/travis/leaprovenzano/collectionish.svg)](https://travis-ci.com/leaprovenzano/collectionish)
+[![build]](https://github.com/leaprovenzano/collectionish/workflows/CI/badge.svg)
 [![documentation status](https://readthedocs.org/projects/collectionish/badge/?version=latest)](https://collectionish.readthedocs.io/en/latest/?badge=latest)
 [![coverage](https://codecov.io/gh/leaprovenzano/collectionish/branch/master/graph/badge.svg)](https://codecov.io/gh/leaprovenzano/collectionish/branch/master/graph/badge.svg)
 ------------------------------------------------------------------------
