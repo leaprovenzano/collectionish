@@ -63,7 +63,7 @@ class NumDict(Dict[str, NumT]):
         >>> x = NumDict(a =-3.56, b=6.4)
         >>> y = NumDict(a =2, b=4, extra=6)
         >>> x * y
-        x = NumDict(a =-7.12, b=25.6)
+        NumDict({'a': -7.12, 'b': 25.6})
 
         if a key is missing from the righthand numberdict we treat the missing bit
         as the identity value for that operation:
@@ -75,7 +75,7 @@ class NumDict(Dict[str, NumT]):
         >>> x = NumDict(a =-3.56, b=6.4)
         >>> y = NumDict(a =2, extra=6) # no b!
         >>> x * y
-        x = NumDict(a =-7.12, b=6.4)
+        NumDict({'a': -7.12, 'b': 6.4})
 
         numdicts support basic builtins like round and abs:
 
@@ -84,7 +84,7 @@ class NumDict(Dict[str, NumT]):
         NumDict({'a': -4, 'b': 3, 'c': 6, 'd': 2})
 
         >>> round(nd, 1)
-        NumDict({'a': -3.56, 'b': 3.1, 'c': 6.4, 'd': 2})
+        NumDict({'a': -3.6, 'b': 3.1, 'c': 6.4, 'd': 2})
 
         >>> abs(nd)
         NumDict({'a': 3.56, 'b': 3.1, 'c': 6.4, 'd': 2})
