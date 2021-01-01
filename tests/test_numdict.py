@@ -1,9 +1,9 @@
 import pytest
 from copy import deepcopy
-from collectionish import NumDict, AttyNumDict
+from collectionish import NumDict, NumAttyDict
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_addition(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v + 2 for k, v in x.items()})
@@ -13,7 +13,7 @@ def test_scalar_addition(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_subtraction(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v - 2 for k, v in x.items()})
@@ -23,7 +23,7 @@ def test_scalar_subtraction(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_multiplication(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v * 2 for k, v in x.items()})
@@ -33,7 +33,7 @@ def test_scalar_multiplication(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_division(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v / 2 for k, v in x.items()})
@@ -43,8 +43,8 @@ def test_scalar_division(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
-def test_scalar_exponentiation(x):
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
+def test_scalar_power(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v ** 2 for k, v in x.items()})
     y = x ** 2
@@ -53,7 +53,7 @@ def test_scalar_exponentiation(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_floor_division(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v // 2 for k, v in x.items()})
@@ -63,7 +63,7 @@ def test_scalar_floor_division(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_modulus(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v % 2 for k, v in x.items()})
@@ -72,7 +72,7 @@ def test_scalar_modulus(x):
     assert isinstance(y, x.__class__)
     assert x == orig
 
-    @pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+    @pytest.mark.parametrize('x,', [NumDict(a=3, b=2), NumAttyDict(a=3, b=2)])
     def test_rightand_scalar_addition(x):
         orig = deepcopy(x)
         expected = x.__class__({k: 23.256 + v for k, v in x.items()})
@@ -82,7 +82,7 @@ def test_scalar_modulus(x):
         assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), NumAttyDict(a=3, b=2)])
 def test_rightand_scalar_subtraction(x):
     orig = deepcopy(x)
     expected = x.__class__({k: 23.256 - v for k, v in x.items()})
@@ -92,7 +92,7 @@ def test_rightand_scalar_subtraction(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), NumAttyDict(a=3, b=2)])
 def test_rightand_scalar_multiplication(x):
     orig = deepcopy(x)
     expected = x.__class__({k: 23.256 * v for k, v in x.items()})
@@ -102,7 +102,7 @@ def test_rightand_scalar_multiplication(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), NumAttyDict(a=3, b=2)])
 def test_rightand_scalar_division(x):
     orig = deepcopy(x)
     expected = x.__class__({k: 23.256 / v for k, v in x.items()})
@@ -112,8 +112,8 @@ def test_rightand_scalar_division(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
-def test_rightand_scalar_exponentiation(x):
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), NumAttyDict(a=3, b=2)])
+def test_rightand_scalar_power(x):
     orig = deepcopy(x)
     expected = x.__class__({k: 23.256 ** v for k, v in x.items()})
     y = 23.256 ** x
@@ -122,7 +122,7 @@ def test_rightand_scalar_exponentiation(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), NumAttyDict(a=3, b=2)])
 def test_rightand_scalar_floor_division(x):
     orig = deepcopy(x)
     expected = x.__class__({k: 23.256 // v for k, v in x.items()})
@@ -132,7 +132,7 @@ def test_rightand_scalar_floor_division(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), NumAttyDict(a=3, b=2)])
 def test_rightand_scalar_modulus(x):
     orig = deepcopy(x)
     expected = x.__class__({k: 23.256 % v for k, v in x.items()})
@@ -142,49 +142,49 @@ def test_rightand_scalar_modulus(x):
     assert x == orig
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), NumAttyDict(a=3.5, b=2.24)])
 def test_inplace_scalar_addition(x):
     expected = x.__class__({k: v + 2 for k, v in x.items()})
     x += 2
     assert x == expected
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), NumAttyDict(a=3.5, b=2.24)])
 def test_inplace_scalar_subtraction(x):
     expected = x.__class__({k: v - 2 for k, v in x.items()})
     x -= 2
     assert x == expected
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), NumAttyDict(a=3.5, b=2.24)])
 def test_inplace_scalar_multiplication(x):
     expected = x.__class__({k: v * 2 for k, v in x.items()})
     x *= 2
     assert x == expected
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), NumAttyDict(a=3.5, b=2.24)])
 def test_inplace_scalar_division(x):
     expected = x.__class__({k: v / 2 for k, v in x.items()})
     x /= 2
     assert x == expected
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
-def test_inplace_scalar_exponentiation(x):
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), NumAttyDict(a=3.5, b=2.24)])
+def test_inplace_scalar_power(x):
     expected = x.__class__({k: v ** 2 for k, v in x.items()})
     x **= 2
     assert x == expected
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), NumAttyDict(a=3.5, b=2.24)])
 def test_inplace_scalar_floor_division(x):
     expected = x.__class__({k: v // 2 for k, v in x.items()})
     x //= 2
     assert x == expected
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), NumAttyDict(a=3.5, b=2.24)])
 def test_inplace_scalar_modulus(x):
     expected = x.__class__({k: v % 2 for k, v in x.items()})
     x %= 2
@@ -195,13 +195,13 @@ def test_inplace_scalar_modulus(x):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=5.54, b=7.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=5.54, b=7.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=5.54, b=7.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=5.54, b=7.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=5.54, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=5.54, b=7.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=5.54, b=7.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=5.54, b=7.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=5.54, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=5.54, b=7.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=5.54, b=7.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=5.54, b=7.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=5.54, b=4.5)),
     ],
 )
 def test_oop_addition_with_other(x, y, expected):
@@ -217,13 +217,13 @@ def test_oop_addition_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=1.54, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=1.54, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=1.54, b=4.5)),
     ],
 )
 def test_oop_subtraction_with_other(x, y, expected):
@@ -239,13 +239,13 @@ def test_oop_subtraction_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=7.08, b=13.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=7.08, b=13.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=7.08, b=13.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=7.08, b=13.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=7.08, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=7.08, b=13.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=7.08, b=13.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=7.08, b=13.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=7.08, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=7.08, b=13.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=7.08, b=13.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=7.08, b=13.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=7.08, b=4.5)),
     ],
 )
 def test_oop_multiplication_with_other(x, y, expected):
@@ -261,13 +261,13 @@ def test_oop_multiplication_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=1.77, b=1.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=1.77, b=1.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=1.77, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=1.77, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=1.77, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=1.77, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=1.77, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=1.77, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=1.77, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=1.77, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=1.77, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=1.77, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=1.77, b=4.5)),
     ],
 )
 def test_oop_division_with_other(x, y, expected):
@@ -283,16 +283,16 @@ def test_oop_division_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3, b=4), NumDict(a=2, b=3), NumDict(a=9, b=64)),
-        (NumDict(a=3, b=4), AttyNumDict(a=2, b=3), NumDict(a=9, b=64)),
+        (NumDict(a=3, b=4), NumAttyDict(a=2, b=3), NumDict(a=9, b=64)),
         (NumDict(a=3, b=4), NumDict(a=2, b=3, extra=4), NumDict(a=9, b=64)),
         (NumDict(a=3, b=4), NumDict(a=2), NumDict(a=9, b=4)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=3), AttyNumDict(a=9, b=64)),
-        (AttyNumDict(a=3, b=4), NumDict(a=2, b=3), AttyNumDict(a=9, b=64)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=9, b=64)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2), AttyNumDict(a=9, b=4)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=3), NumAttyDict(a=9, b=64)),
+        (NumAttyDict(a=3, b=4), NumDict(a=2, b=3), NumAttyDict(a=9, b=64)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=9, b=64)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2), NumAttyDict(a=9, b=4)),
     ],
 )
-def test_oop_exponentiation_with_other(x, y, expected):
+def test_oop_power_with_other(x, y, expected):
     orig_x = deepcopy(x)
     orig_y = deepcopy(y)
 
@@ -305,13 +305,13 @@ def test_oop_exponentiation_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=39, b=45), NumDict(a=2, b=3), NumDict(a=19, b=15)),
-        (NumDict(a=39, b=45), AttyNumDict(a=2, b=3), NumDict(a=19, b=15)),
+        (NumDict(a=39, b=45), NumAttyDict(a=2, b=3), NumDict(a=19, b=15)),
         (NumDict(a=39, b=45), NumDict(a=2, b=3, extra=4), NumDict(a=19, b=15)),
         (NumDict(a=39, b=45), NumDict(a=2), NumDict(a=19, b=45)),
-        (AttyNumDict(a=39, b=45), AttyNumDict(a=2, b=3), AttyNumDict(a=19, b=15)),
-        (AttyNumDict(a=39, b=45), NumDict(a=2, b=3), AttyNumDict(a=19, b=15)),
-        (AttyNumDict(a=39, b=45), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=19, b=15)),
-        (AttyNumDict(a=39, b=45), AttyNumDict(a=2), AttyNumDict(a=19, b=45)),
+        (NumAttyDict(a=39, b=45), NumAttyDict(a=2, b=3), NumAttyDict(a=19, b=15)),
+        (NumAttyDict(a=39, b=45), NumDict(a=2, b=3), NumAttyDict(a=19, b=15)),
+        (NumAttyDict(a=39, b=45), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=19, b=15)),
+        (NumAttyDict(a=39, b=45), NumAttyDict(a=2), NumAttyDict(a=19, b=45)),
     ],
 )
 def test_oop_floor_division_with_other(x, y, expected):
@@ -327,13 +327,13 @@ def test_oop_floor_division_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=1.54, b=0.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=1.54, b=0.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=1.54, b=0.5)),
     ],
 )
 def test_oop_modulus_with_other(x, y, expected):
@@ -349,13 +349,13 @@ def test_oop_modulus_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=5.54, b=7.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=5.54, b=7.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=5.54, b=7.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=5.54, b=7.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=5.54, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=5.54, b=7.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=5.54, b=7.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=5.54, b=7.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=5.54, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=5.54, b=7.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=5.54, b=7.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=5.54, b=7.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=5.54, b=4.5)),
     ],
 )
 def test_inplace_addition_with_other(x, y, expected):
@@ -370,13 +370,13 @@ def test_inplace_addition_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=1.54, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=1.54, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=1.54, b=4.5)),
     ],
 )
 def test_inplace_subtraction_with_other(x, y, expected):
@@ -391,13 +391,13 @@ def test_inplace_subtraction_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=7.08, b=13.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=7.08, b=13.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=7.08, b=13.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=7.08, b=13.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=7.08, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=7.08, b=13.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=7.08, b=13.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=7.08, b=13.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=7.08, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=7.08, b=13.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=7.08, b=13.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=7.08, b=13.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=7.08, b=4.5)),
     ],
 )
 def test_inplace_multiplication_with_other(x, y, expected):
@@ -412,13 +412,13 @@ def test_inplace_multiplication_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=1.77, b=1.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=1.77, b=1.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=1.77, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=1.77, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=1.77, b=4.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=1.77, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=1.77, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=1.77, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=1.77, b=4.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=1.77, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=1.77, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=1.77, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=1.77, b=4.5)),
     ],
 )
 def test_inplace_division_with_other(x, y, expected):
@@ -433,16 +433,16 @@ def test_inplace_division_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3, b=4), NumDict(a=2, b=3), NumDict(a=9, b=64)),
-        (NumDict(a=3, b=4), AttyNumDict(a=2, b=3), NumDict(a=9, b=64)),
+        (NumDict(a=3, b=4), NumAttyDict(a=2, b=3), NumDict(a=9, b=64)),
         (NumDict(a=3, b=4), NumDict(a=2, b=3, extra=4), NumDict(a=9, b=64)),
         (NumDict(a=3, b=4), NumDict(a=2), NumDict(a=9, b=4)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=3), AttyNumDict(a=9, b=64)),
-        (AttyNumDict(a=3, b=4), NumDict(a=2, b=3), AttyNumDict(a=9, b=64)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=9, b=64)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2), AttyNumDict(a=9, b=4)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=3), NumAttyDict(a=9, b=64)),
+        (NumAttyDict(a=3, b=4), NumDict(a=2, b=3), NumAttyDict(a=9, b=64)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=9, b=64)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2), NumAttyDict(a=9, b=4)),
     ],
 )
-def test_inplace_exponentiation_with_other(x, y, expected):
+def test_inplace_power_with_other(x, y, expected):
     orig_y = deepcopy(y)
 
     x **= y
@@ -454,13 +454,13 @@ def test_inplace_exponentiation_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=39, b=45), NumDict(a=2, b=3), NumDict(a=19, b=15)),
-        (NumDict(a=39, b=45), AttyNumDict(a=2, b=3), NumDict(a=19, b=15)),
+        (NumDict(a=39, b=45), NumAttyDict(a=2, b=3), NumDict(a=19, b=15)),
         (NumDict(a=39, b=45), NumDict(a=2, b=3, extra=4), NumDict(a=19, b=15)),
         (NumDict(a=39, b=45), NumDict(a=2), NumDict(a=19, b=45)),
-        (AttyNumDict(a=39, b=45), AttyNumDict(a=2, b=3), AttyNumDict(a=19, b=15)),
-        (AttyNumDict(a=39, b=45), NumDict(a=2, b=3), AttyNumDict(a=19, b=15)),
-        (AttyNumDict(a=39, b=45), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=19, b=15)),
-        (AttyNumDict(a=39, b=45), AttyNumDict(a=2), AttyNumDict(a=19, b=45)),
+        (NumAttyDict(a=39, b=45), NumAttyDict(a=2, b=3), NumAttyDict(a=19, b=15)),
+        (NumAttyDict(a=39, b=45), NumDict(a=2, b=3), NumAttyDict(a=19, b=15)),
+        (NumAttyDict(a=39, b=45), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=19, b=15)),
+        (NumAttyDict(a=39, b=45), NumAttyDict(a=2), NumAttyDict(a=19, b=45)),
     ],
 )
 def test_inplace_floor_division_with_other(x, y, expected):
@@ -475,13 +475,13 @@ def test_inplace_floor_division_with_other(x, y, expected):
     'x, y, expected',
     [
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
-        (NumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
+        (NumDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2, b=3, extra=4), NumDict(a=1.54, b=1.5)),
         (NumDict(a=3.54, b=4.5), NumDict(a=2), NumDict(a=1.54, b=0.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), NumDict(a=2, b=3), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2, b=3, extra=4), AttyNumDict(a=1.54, b=1.5)),
-        (AttyNumDict(a=3.54, b=4.5), AttyNumDict(a=2), AttyNumDict(a=1.54, b=0.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumDict(a=2, b=3), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2, b=3, extra=4), NumAttyDict(a=1.54, b=1.5)),
+        (NumAttyDict(a=3.54, b=4.5), NumAttyDict(a=2), NumAttyDict(a=1.54, b=0.5)),
     ],
 )
 def test_inplace_modulus_with_other(x, y, expected):
@@ -492,7 +492,7 @@ def test_inplace_modulus_with_other(x, y, expected):
     assert y == orig_y
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_ge(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v >= 2 for k, v in x.items()})
@@ -506,9 +506,9 @@ def test_scalar_ge(x):
     'x, y, expected',
     [
         (NumDict(a=3, b=4), NumDict(a=2, b=6), NumDict(a=True, b=False)),
-        (NumDict(a=3, b=4), AttyNumDict(a=2, b=6), NumDict(a=True, b=False)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=6), AttyNumDict(a=True, b=False)),
-        (AttyNumDict(a=3, b=4), NumDict(a=2, b=6), AttyNumDict(a=True, b=False)),
+        (NumDict(a=3, b=4), NumAttyDict(a=2, b=6), NumDict(a=True, b=False)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=6), NumAttyDict(a=True, b=False)),
+        (NumAttyDict(a=3, b=4), NumDict(a=2, b=6), NumAttyDict(a=True, b=False)),
     ],
 )
 def test_oop_ge_with_other(x, y, expected):
@@ -520,7 +520,7 @@ def test_oop_ge_with_other(x, y, expected):
     assert y == orig_y
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_gt(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v > 2 for k, v in x.items()})
@@ -534,9 +534,9 @@ def test_scalar_gt(x):
     'x, y, expected',
     [
         (NumDict(a=3, b=4), NumDict(a=2, b=6), NumDict(a=True, b=False)),
-        (NumDict(a=3, b=4), AttyNumDict(a=2, b=6), NumDict(a=True, b=False)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=6), AttyNumDict(a=True, b=False)),
-        (AttyNumDict(a=3, b=4), NumDict(a=2, b=6), AttyNumDict(a=True, b=False)),
+        (NumDict(a=3, b=4), NumAttyDict(a=2, b=6), NumDict(a=True, b=False)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=6), NumAttyDict(a=True, b=False)),
+        (NumAttyDict(a=3, b=4), NumDict(a=2, b=6), NumAttyDict(a=True, b=False)),
     ],
 )
 def test_oop_gt_with_other(x, y, expected):
@@ -548,7 +548,7 @@ def test_oop_gt_with_other(x, y, expected):
     assert y == orig_y
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_lt(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v < 2 for k, v in x.items()})
@@ -562,9 +562,9 @@ def test_scalar_lt(x):
     'x, y, expected',
     [
         (NumDict(a=3, b=4), NumDict(a=2, b=6), NumDict(a=False, b=True)),
-        (NumDict(a=3, b=4), AttyNumDict(a=2, b=6), NumDict(a=False, b=True)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=6), AttyNumDict(a=False, b=True)),
-        (AttyNumDict(a=3, b=4), NumDict(a=2, b=6), AttyNumDict(a=False, b=True)),
+        (NumDict(a=3, b=4), NumAttyDict(a=2, b=6), NumDict(a=False, b=True)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=6), NumAttyDict(a=False, b=True)),
+        (NumAttyDict(a=3, b=4), NumDict(a=2, b=6), NumAttyDict(a=False, b=True)),
     ],
 )
 def test_oop_lt_with_other(x, y, expected):
@@ -576,7 +576,7 @@ def test_oop_lt_with_other(x, y, expected):
     assert y == orig_y
 
 
-@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), AttyNumDict(a=1.54, b=2.1)])
+@pytest.mark.parametrize('x,', [NumDict(a=1.54, b=2.1), NumAttyDict(a=1.54, b=2.1)])
 def test_scalar_le(x):
     orig = deepcopy(x)
     expected = x.__class__({k: v <= 2 for k, v in x.items()})
@@ -590,9 +590,9 @@ def test_scalar_le(x):
     'x, y, expected',
     [
         (NumDict(a=3, b=4), NumDict(a=2, b=6), NumDict(a=False, b=True)),
-        (NumDict(a=3, b=4), AttyNumDict(a=2, b=6), NumDict(a=False, b=True)),
-        (AttyNumDict(a=3, b=4), NumDict(a=2, b=6), AttyNumDict(a=False, b=True)),
-        (AttyNumDict(a=3, b=4), AttyNumDict(a=2, b=6), AttyNumDict(a=False, b=True)),
+        (NumDict(a=3, b=4), NumAttyDict(a=2, b=6), NumDict(a=False, b=True)),
+        (NumAttyDict(a=3, b=4), NumDict(a=2, b=6), NumAttyDict(a=False, b=True)),
+        (NumAttyDict(a=3, b=4), NumAttyDict(a=2, b=6), NumAttyDict(a=False, b=True)),
     ],
 )
 def test_oop_le_with_other(x, y, expected):

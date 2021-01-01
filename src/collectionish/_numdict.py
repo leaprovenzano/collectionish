@@ -6,7 +6,104 @@ NumT = Union[int, float, Number]
 
 
 class NumDict(Dict[str, NumT]):
-    """A dictionary that you can do basic math with as though it was a number."""
+    """A dictionary that you can do basic math with as though it was a number.
+
+    **Supported Operations**:
+        - addition (+)
+        - subtraction (-)
+        - multiplication (*)
+        - division (/)
+        - floor division (//)
+        - power (**)
+        - modulus (%)
+        - ge (>=) -- for scalars or numdicts with matching keys
+        - gt (>) -- for scalars or numdicts with matching keys
+        - lt (<=) -- for scalars or numdicts with matching keys
+        - le (<) -- for scalars or numdicts with matching keys
+        - negation (-)
+        - abs
+        - round
+
+    Example:
+        >>> from collectionish import NumDict
+        >>>
+        >>> nd = NumDict(a =-3.56, b=6.4)
+        >>> nd
+        NumDict({'a': -3.56, 'b': 6.4})
+
+        numdicts support arithmetic via builtin operators on scalar with scalar values:
+
+        >>> nd + 1
+        NumDict({'a': -2.56, 'b': 7.4})
+
+        >>> 1 + nd
+        NumDict({'a': -2.56, 'b': 7.4})
+
+        including inplace ops:
+
+        >>> nd += 1
+        >>> nd
+        NumDict({'a': -2.56, 'b': 7.4})
+
+        likewise with other numdicts
+
+        >>> nd * NumDict(a=2, b=4)
+        NumDict({'a': -5.12, 'b': 29.6})
+
+        >>> nd *= NumDict(a=2, b=4)
+        >>> nd
+        NumDict({'a': -5.12, 'b': 29.6})
+
+        when doing math on numdicts that dont share all keys
+        we try and stay do the sensible thing....
+
+        keys are taken from the lefthand numberdict and will be ordered as such.
+        so any extra keys in the rightand numberdict will be ignored.
+
+        >>> x = NumDict(a =-3.56, b=6.4)
+        >>> y = NumDict(a =2, b=4, extra=6)
+        >>> x * y
+        x = NumDict(a =-7.12, b=25.6)
+
+        if a key is missing from the righthand numberdict we treat the missing bit
+        as the identity value for that operation:
+
+        0 : addition, subtraction
+        1 : multiplication, division, exponentiation, floor division and modulus
+
+
+        >>> x = NumDict(a =-3.56, b=6.4)
+        >>> y = NumDict(a =2, extra=6) # no b!
+        >>> x * y
+        x = NumDict(a =-7.12, b=6.4)
+
+        numdicts support basic builtins like round and abs:
+
+        >>> nd = NumDict(a = -3.56, b=3.1, c=6.4, d=2)
+        >>> round(nd)
+        NumDict({'a': -4, 'b': 3, 'c': 6, 'd': 2})
+
+        >>> round(nd, 1)
+        NumDict({'a': -3.56, 'b': 3.1, 'c': 6.4, 'd': 2})
+
+        >>> abs(nd)
+        NumDict({'a': 3.56, 'b': 3.1, 'c': 6.4, 'd': 2})
+
+
+        as well as a couple extra aggregation methods:
+
+        >>> nd.sum()
+        7.94
+
+        >>> nd.min()
+        -3.56
+
+        >>> nd.max()
+        6.4
+
+        >>> nd.mean()
+        1.985
+    """
 
     def _is_supported_value(self, value) -> bool:
         return isinstance(value, Number)
@@ -165,22 +262,26 @@ class NumDict(Dict[str, NumT]):
     # special aggregation ops
 
     def min(self):
+        """return the minimum value in this numdict."""
         return min(self.values())
 
     def max(self):
-        return max(self.values)
+        """return the maximum value in this numdict."""
+        return max(self.values())
 
     def sum(self):
+        """return the sum of the values in this numdict."""
         return sum(self.values())
 
     def mean(self):
+        """return the mean (average) of the values in this numdict."""
         return self.sum() / len(self)
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({dict.__repr__(self)})'
 
 
-class AttyNumDict(NumDict):
+class NumAttyDict(NumDict):
     """A numeric dict like :class:`NumDict` with attribute access to keys."""
 
     def __getattr__(self, key: str):
