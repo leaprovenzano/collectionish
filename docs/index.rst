@@ -10,6 +10,8 @@
 
    AncestorChainMap
    AttyDict
+   NumDict
+   NumAttyDict
    Sentry
    UniqueTuple
    ops
