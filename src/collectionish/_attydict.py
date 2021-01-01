@@ -1,7 +1,6 @@
 from typing import Dict, TypeVar, Iterable, Mapping, Optional, Tuple, Union
 
 from collectionish.utils import is_valid_identifier
-from collectionish.mixins import DictAttrAccessMixin
 
 T = TypeVar('T')
 InitFromT = Union[Mapping[str, T], Iterable[Tuple[str, T]]]
@@ -16,7 +15,7 @@ def _unpack_args(iterable_or_mapping: Optional[InitFromT] = None, **kwargs):
     yield from kwargs.items()
 
 
-class AttyDict(Dict[str, T], DictAttrAccessMixin):
+class AttyDict(Dict[str, T]):
 
     """A lightweight dictionary with dot access.
 
@@ -98,3 +97,9 @@ class AttyDict(Dict[str, T], DictAttrAccessMixin):
     def update(self, **kwargs):
         for k, v in kwargs.items():
             self[k] = v
+
+    def __getattr__(self, key: str) -> T:
+        try:
+            return self[key]  # type:ignore
+        except KeyError:
+            raise AttributeError(key)
