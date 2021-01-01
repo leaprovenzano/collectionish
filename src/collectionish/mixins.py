@@ -205,4 +205,7 @@ class NumericMixin:
 
 class DictAttrAccessMixin(SupportsIndex):
     def __getattr__(self, key: str) -> T:
-        return self[key]  # type:ignore
+        try:
+            return self[key]  # type:ignore
+        except KeyError:
+            raise AttributeError(key)

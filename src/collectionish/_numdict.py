@@ -1,9 +1,12 @@
-from typing import Dict
+from typing import Dict, Union
 from numbers import Number
 from collectionish.mixins import NumericMixin, DictAttrAccessMixin
 
 
-class NumDict(Dict[str, Number], NumericMixin):
+NumT = Union[int, float, Number]
+
+
+class NumDict(Dict[str, NumT], NumericMixin):
     """A dictionary that you can do basic math with as though it was a number."""
 
     def _is_supported_value(self, value) -> bool:
