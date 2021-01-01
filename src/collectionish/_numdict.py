@@ -68,8 +68,8 @@ class NumDict(Dict[str, NumT]):
         if a key is missing from the righthand numberdict we treat the missing bit
         as the identity value for that operation:
 
-        0 : addition, subtraction
-        1 : multiplication, division, exponentiation, floor division and modulus
+        0 for addition, subtraction &
+         1 for multiplication, division, exponentiation, floor division and modulus
 
 
         >>> x = NumDict(a =-3.56, b=6.4)
@@ -282,7 +282,23 @@ class NumDict(Dict[str, NumT]):
 
 
 class NumAttyDict(NumDict):
-    """A numeric dict like :class:`NumDict` with attribute access to keys."""
+    """A numeric dict like :class:`NumDict` with attribute access to keys.
+
+    supports all the same operations as regular :class:`NumDict`.
+
+    Example:
+        >>> from collectionish import NumAttyDict
+        >>>
+        >>> nd = NumAttyDict(a =-3.56, b=6.4)
+        >>> nd += 2
+        >>> nd.a
+        -1.56
+
+        >>> nd.b
+        8.4
+
+
+    """
 
     def __getattr__(self, key: str):
         try:
