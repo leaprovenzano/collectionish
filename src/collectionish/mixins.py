@@ -22,7 +22,7 @@ class NumericMixin:
         return self.__dict__.items()
 
     def _apply_op_with_obj(self, op, obj, noop):
-        return self.__class__(**{k: op(self._get(k, noop)) for k, v in self._items()})
+        return self.__class__(**{k: op(v, obj._get(k, noop)) for k, v in self._items()})
 
     def _apply_op_with_value(self, op, value):
         return self.__class__(**{k: op(v, value) for k, v in self._items()})
