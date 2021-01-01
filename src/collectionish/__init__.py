@@ -11,3 +11,4 @@ from ._uniquetuple import UniqueTuple
 from ._attydict import AttyDict
 from ._sentry import Sentry
 from ._ancestor_chain_map import AncestorChainMap
+from ._numdict import NumDict, AttyNumDict

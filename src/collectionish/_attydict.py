@@ -1,6 +1,7 @@
 from typing import Dict, TypeVar, Iterable, Mapping, Optional, Tuple, Union
 
 from collectionish.utils import is_valid_identifier
+from collectionish.mixins import DictAttrAccessMixin
 
 T = TypeVar('T')
 InitFromT = Union[Mapping[str, T], Iterable[Tuple[str, T]]]
@@ -15,7 +16,7 @@ def _unpack_args(iterable_or_mapping: Optional[InitFromT] = None, **kwargs):
     yield from kwargs.items()
 
 
-class AttyDict(Dict[str, T]):
+class AttyDict(Dict[str, T], DictAttrAccessMixin):
 
     """A lightweight dictionary with dot access.
 
@@ -71,10 +72,13 @@ class AttyDict(Dict[str, T]):
     def _attrify(cls, value):
         if hasattr(value, '__iter__'):
             if isinstance(value, (list, tuple)):
-                return type(value)((cls._attrify(v) for v in value))
+                return type(value)(cls._attrify(v) for v in value)
             if isinstance(value, dict) and not isinstance(value, cls):
                 return cls(**value)
         return value
+
+    def __setattr__(self, key: str, value: T):
+        self[key] = value
 
     def __init__(self, iterable_or_mapping: Optional[InitFromT] = None, **kwargs):
         for k, v in _unpack_args(iterable_or_mapping, **kwargs):
@@ -85,12 +89,6 @@ class AttyDict(Dict[str, T]):
             raise TypeError(f'{self.__class__.__name__} keys must be strings.')
         if not is_valid_identifier(s):
             raise SyntaxError(f'{self.__class__.__name__} keys must be valid python identifiers.')
-
-    def __getattr__(self, key: str) -> T:
-        return self[key]
-
-    def __setattr__(self, key: str, value: T):
-        self[key] = value
 
     def __setitem__(self, key: str, value: T):
         if key not in self:
