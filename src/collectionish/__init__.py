@@ -5,7 +5,7 @@
 
 __author__ = """Lea Provenzano"""
 __email__ = 'leaprovenzano@gmail.com'
-__version__ = '0.4.0'
+__version__ = '0.5.0'
 
 from ._uniquetuple import UniqueTuple
 from ._attydict import AttyDict
