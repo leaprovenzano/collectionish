@@ -1,4 +1,4 @@
-from typing import Any, Optional, Callable, TypeVar, SupportsIndex
+from typing import Any, Optional, Callable, TypeVar
 from numbers import Number
 import operator
 
@@ -153,7 +153,7 @@ class NumericMixin:
         return self._iapply_with_other(operator.truediv, other, noop=1)
 
     def __rtruediv__(self, other: Any):
-        return self._rapply_with_other(operator.pow, other)
+        return self._rapply_with_other(operator.truediv, other)
 
     def __pow__(self, other: Any):
         return self._apply_with_other(operator.pow, other, noop=1)
@@ -203,7 +203,7 @@ class NumericMixin:
         )
 
 
-class DictAttrAccessMixin(SupportsIndex):
+class DictAttrAccessMixin:
     def __getattr__(self, key: str) -> T:
         try:
             return self[key]  # type:ignore
