@@ -71,3 +71,72 @@ def test_scalar_modulus(x):
     assert y == expected
     assert isinstance(y, x.__class__)
     assert x == orig
+
+    @pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+    def test_rightand_scalar_addition(x):
+        orig = deepcopy(x)
+        expected = x.__class__({k: 23.256 + v for k, v in x.items()})
+        y = 23.256 + x
+        assert y == expected
+        assert isinstance(y, x.__class__)
+        assert x == orig
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+def test_rightand_scalar_subtraction(x):
+    orig = deepcopy(x)
+    expected = x.__class__({k: 23.256 - v for k, v in x.items()})
+    y = 23.256 - x
+    assert y == expected
+    assert isinstance(y, x.__class__)
+    assert x == orig
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+def test_rightand_scalar_multiplication(x):
+    orig = deepcopy(x)
+    expected = x.__class__({k: 23.256 * v for k, v in x.items()})
+    y = 23.256 * x
+    assert y == expected
+    assert isinstance(y, x.__class__)
+    assert x == orig
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+def test_rightand_scalar_division(x):
+    orig = deepcopy(x)
+    expected = x.__class__({k: 23.256 / v for k, v in x.items()})
+    y = 23.256 / x
+    assert y == expected
+    assert isinstance(y, x.__class__)
+    assert x == orig
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+def test_rightand_scalar_exponentiation(x):
+    orig = deepcopy(x)
+    expected = x.__class__({k: 23.256 ** v for k, v in x.items()})
+    y = 23.256 ** x
+    assert y == expected
+    assert isinstance(y, x.__class__)
+    assert x == orig
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+def test_rightand_scalar_floor_division(x):
+    orig = deepcopy(x)
+    expected = x.__class__({k: 23.256 // v for k, v in x.items()})
+    y = 23.256 // x
+    assert y == expected
+    assert isinstance(y, x.__class__)
+    assert x == orig
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3, b=2), AttyNumDict(a=3, b=2)])
+def test_rightand_scalar_modulus(x):
+    orig = deepcopy(x)
+    expected = x.__class__({k: 23.256 % v for k, v in x.items()})
+    y = 23.256 % x
+    assert y == expected
+    assert isinstance(y, x.__class__)
+    assert x == orig
