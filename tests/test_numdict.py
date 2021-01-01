@@ -140,3 +140,52 @@ def test_rightand_scalar_modulus(x):
     assert y == expected
     assert isinstance(y, x.__class__)
     assert x == orig
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+def test_inplace_scalar_addition(x):
+    expected = x.__class__({k: v + 2 for k, v in x.items()})
+    x += 2
+    assert x == expected
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+def test_inplace_scalar_subtraction(x):
+    expected = x.__class__({k: v - 2 for k, v in x.items()})
+    x -= 2
+    assert x == expected
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+def test_inplace_scalar_multiplication(x):
+    expected = x.__class__({k: v * 2 for k, v in x.items()})
+    x *= 2
+    assert x == expected
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+def test_inplace_scalar_division(x):
+    expected = x.__class__({k: v / 2 for k, v in x.items()})
+    x /= 2
+    assert x == expected
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+def test_inplace_scalar_exponentiation(x):
+    expected = x.__class__({k: v ** 2 for k, v in x.items()})
+    x **= 2
+    assert x == expected
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+def test_inplace_scalar_floor_division(x):
+    expected = x.__class__({k: v // 2 for k, v in x.items()})
+    x //= 2
+    assert x == expected
+
+
+@pytest.mark.parametrize('x,', [NumDict(a=3.5, b=2.24), AttyNumDict(a=3.5, b=2.24)])
+def test_inplace_scalar_modulus(x):
+    expected = x.__class__({k: v % 2 for k, v in x.items()})
+    x %= 2
+    assert x == expected
