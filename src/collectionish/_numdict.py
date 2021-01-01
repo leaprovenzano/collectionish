@@ -19,7 +19,7 @@ class NumDict(Dict[str, NumT], NumericMixin):
         self[k] = v
 
     def _get(self, k, default=None):
-        if default is not None:
+        if default is None:
             return self[k]
         return self.get(k, default)
 
