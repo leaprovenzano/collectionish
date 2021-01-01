@@ -644,3 +644,15 @@ def test_min():
 def test_max():
     nd = NumDict(a=-3.56, b=3.1, c=6.4, d=2)
     assert nd.max() == 6.4
+
+
+def test_equality_with_scalar():
+    nd = NumDict(a=-3.56, b=3.1, c=6.4, d=6.4)
+    assert (nd == 6.4) == NumDict(a=False, b=False, c=True, d=True)
+
+
+def test_missing_key_raises_attribute_error_if_accessed_from_attr():
+    nd = NumAttyDict(a=1, b=2)
+    assert nd.a == 1
+    with pytest.raises(AttributeError):
+        nd.c
